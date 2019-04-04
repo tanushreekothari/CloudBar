@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="presentationLayer.CloudBarPresentation"%>
-<%@ page import="presentationLayer.DropDownItemsList"%>
-<%@ page import="presentationLayer.OfferInfo"%>
-<%@ page import="businessLayer.Offer"%>
-<%@ page import="java.util.*" %>
+<%@ page import="src.main.webapp.presentationLayer.CloudBarPresentation"%>
+<%@ page import="src.main.webapp.presentationLayer.DropDownItemsList"%>
+<%@ page import="src.main.webapp.presentationLayer.OfferInfo"%>
+<%@ page import="src.main.webapp.businessLayer.Offer"%>
+<%@ page import="src.main.webapp.java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,34 +121,34 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" name="state" id="exampleFormControlSelect1">
                                 <option>Select State</option>
-                                <option>Texas</option> 
+                                <option>Texas</option>
                             </select>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" name="city" id="exampleFormControlSelect2">
-                                <option>Select City</option>                                       
-        <% 
+                                <option>Select City</option>
+        <%
         DropDownItemsList dl = new DropDownItemsList();
-        ArrayList<String> al = dl.getCityList();  
+        ArrayList<String> al = dl.getCityList();
         for(String cityVal: al){ %>
             <option><%= cityVal%></option>
-        <% } %> 
+        <% } %>
                             </select>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" name="product" id="exampleFormControlSelect3">
                                 <option value="select">Choose your Booze</option>
-                                  <% 
-        ArrayList<String> alProd = dl.getProductList(); 
+                                  <%
+        ArrayList<String> alProd = dl.getProductList();
         for(String prodVal: alProd){ %>
             <option><%= prodVal%></option>
         <% } %>
 
-         
+
                             </select>
-                            
+
                         </div>
-                        
+
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <button type="button" class="btn btn-danger wrn-btn" onClick="myfunction() ">Search</button>
                         </div>
@@ -165,7 +165,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="intro_content">
-						
+
 						<div class="intro_title"><h2>About Us</h2></div>
 						<div class="intro_text">
 							<p>Cloud Bar aims to push liquors on virtual clouds and provide alcohol-as-a-service to liquor connoisseurs with a vision to regulate prices. Cloud Bar is a digital platform based out of College Station, Texas that allows its customers to purchase any liquor from authorized sellers and reserve a digital copy of their liquor bottle in their personalized virtual digital bars readily available on the web platform.</p>
@@ -210,7 +210,7 @@
 								<div class="sig_name" id ="disp2"><%=obj.getOfferDesc()%></div>
 								<div class="sig_price ml-auto" id ="disp1">$<%=obj.getOfferCost()%></div>
 							</div>
-							
+
 							<div class="sig_content_list">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
 									<li id ="disp">Beer</li>
@@ -254,11 +254,11 @@
 				</div>
 			</div>
 			<div class="row themenu_row">
-<%  HashMap<String,ArrayList<Offer>> offers = obj.getTopOffers(); 
+<%  HashMap<String,ArrayList<Offer>> offers = obj.getTopOffers();
 %>
 				<!-- Starters -->
-				<% 
-       				 
+				<%
+
       						  for(String offer: offers.keySet()){ %>
 				<div class="col-lg-4 themenu_column">
 					<div class="themenu_col">
@@ -266,8 +266,8 @@
 						<div class="dish_list">
 
 							<!-- Dish -->
-							                       <% 
-       				 ArrayList<Offer> objOffers = offers.get(offer); 
+							                       <%
+       				 ArrayList<Offer> objOffers = offers.get(offer);
       						  for(Offer objOffer: objOffers){ %>
 							<div class="dish">
 								<div class="dish_title_container d-flex flex-xl-row flex-column align-items-start justify-content-start">
@@ -286,14 +286,14 @@
 					</div>
 				</div>
 <% } %>
-				
+
 
 			</div>
 		</div>
 	</div>
 
 	<!-- Reservations -->
-<!--  
+<!--
 	<div class="reservations text-center">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/reservations.jpg" data-speed="0.8"></div>
 		<div class="container">
@@ -334,7 +334,7 @@
 				<div class="col-lg-3 footer_col">
 					<div class="footer_logo">
 						<div class="footer_logo_title">Cloud Bar</div>
-						
+
 					</div>
 					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 <p style="line-height: 1.2;">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made by Group 24</p></div>
@@ -389,4 +389,3 @@
 </body>
 
 </html>
-        
