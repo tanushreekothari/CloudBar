@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="src.main.webapp.presentationLayer.CloudBarPresentation"%>
-<%@ page import="src.main.webapp.presentationLayer.DropDownItemsList"%>
-<%@ page import="src.main.webapp.presentationLayer.OfferInfo"%>
-<%@ page import="src.main.webapp.businessLayer.Offer"%>
-<%@ page import="src.main.webapp.java.util.*" %>
+<%@ page import="presentationLayer.CloudBarPresentation"%>
+<%@ page import="presentationLayer.DropDownItemsList"%>
+<%@ page import="presentationLayer.OfferInfo"%>
+<%@ page import="businessLayer.Offer"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
