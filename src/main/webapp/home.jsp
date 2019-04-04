@@ -108,12 +108,12 @@ if(userName == null) response.sendRedirect("index.jsp");
   			</ul>
   		</div>
   		<div class="menu_reservations_phone ml-auto"><a href="">Hi <%=userName %></a></div>
-  		<div class="menu_reservations_phone1 ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
+  	<form action="LogoutServlet" method="post">	<div class="menu_reservations_phone1 ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
       background-repeat:no-repeat;
       border: none;
       cursor:pointer;
       overflow: hidden;
-      outline:none; color:white;" ></div>
+      outline:none; color:white;" ></div></form>
   	</div>
 
 	<!-- Home -->
