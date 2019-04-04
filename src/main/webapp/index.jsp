@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  	<meta http-equiv="refresh" content="3;url=WebContent/index.jsp" />
+  	<meta http-equiv="refresh" content="3;url=../../../WebContent/index.jsp" />
 <title>Cloud Bar</title>
 </head>
 <body>
