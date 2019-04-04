@@ -127,7 +127,14 @@ public class DatabaseConnection {
 			temp.setOfferCategory("Sample");
 			temp.setOfferCost("20");
 			temp.setOfferName("Sample");
-			map.put("Sample Bar",temp);
+			Offer temp1 = new Offer();
+			temp1.setOfferCategory("Sample");
+			temp1.setOfferCost("20");
+			temp1.setOfferName("Sample");
+			ArrayList<Offer> list = new ArrayList<Offer>();
+			list.add(temp);
+			list.add(temp1);
+			map.put("Sample Bar",list);
 		}
 		return map;
 	}
