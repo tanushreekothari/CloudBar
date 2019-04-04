@@ -77,20 +77,25 @@
 
 	<!-- Menu -->
 
-	<div class="menu trans_800">
-		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-			<ul>
-				<li><a href="index.html">home</a></li>
-				<li><a href="about.html">about us</a></li>
-				<li><a href="menu.html">Products</a></li>
-				<li><a href="#">Offers</a></li>
-				<li><a href="blog.html">blog</a></li>
-				<li><a href="contact.html">contact</a></li>
-			</ul>
-		</div>
-		<div class="menu_reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
-		<div class="menu_reservations_phone1 ml-auto"><a href="signup.html">SIGN UP</a></div>
-	</div>
+  <div class="menu trans_800">
+  		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+  			<ul>
+  				<li><a href="home.jsp">home</a></li>
+  				<li><a href="#">about us</a></li>
+  				<li><a href="#">Products</a></li>
+  				<li><a href="#">Offers</a></li>
+  				<li><a href="">blog</a></li>
+  				<li><a href="">contact</a></li>
+  			</ul>
+  		</div>
+  		<div class="menu_reservations_phone ml-auto"><a href="">Hi <%=userName %></a></div>
+  		<div class="menu_reservations_phone1 ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none; color:white;" ></div>
+  	</div>
 
 	<!-- Home -->
 <!-- Home -->
