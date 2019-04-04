@@ -11,7 +11,7 @@ public class DatabaseConnection {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
+			"jdbc:mysql://173.219.167.170:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
 			//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("select password,firstname from userprofile where username=?");
 			stmt.setString(1,username);
@@ -35,7 +35,7 @@ public class DatabaseConnection {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
+			"jdbc:mysql://173.219.167.170:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
 			//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("select li.LiquorName, b.PriceOffered from BarLiquorAssociative b inner join LiquorInfo li on b.LiquorID=li.LiquorID\n" +
 					"inner join BarAgents ba\n" +
@@ -69,7 +69,7 @@ public class DatabaseConnection {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
+			"jdbc:mysql://173.219.167.170:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
 			//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("select locationcity from locations");
 			ResultSet rs=stmt.executeQuery();
@@ -90,7 +90,7 @@ public class DatabaseConnection {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
+			"jdbc:mysql://173.219.167.170:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
 			//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("select productname from products");
 			ResultSet rs=stmt.executeQuery();
@@ -111,7 +111,7 @@ public class DatabaseConnection {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
+			"jdbc:mysql://173.219.167.170:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
 			//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("select barname from baragents limit 3");
 			ResultSet rs=stmt.executeQuery();
@@ -143,7 +143,7 @@ public class DatabaseConnection {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
+			"jdbc:mysql://173.219.167.170:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
 			//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("select LiquorDescription,LiquorName,PriceOffered from LiquorInfo l inner join BarLiquorAssociative b where l.LiquorID = b.LiquorID and b.barID=1");
 		//	stmt.setString(1,org);
