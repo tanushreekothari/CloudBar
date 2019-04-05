@@ -113,7 +113,7 @@ public class DatabaseConnection {
 			Connection con=DriverManager.getConnection(
 			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
 			//here cloudBar is database name, root is username and password
-			PreparedStatement stmt=con.prepareStatement("select barname from baragents limit 3");
+			PreparedStatement stmt=con.prepareStatement("select barname from baragents where issponsored=1 order by barweight desc LIMIT 3");
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next())  {
 				String temp = rs.getString(1);
@@ -145,8 +145,8 @@ public class DatabaseConnection {
 			Connection con=DriverManager.getConnection(
 			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
 			//here cloudBar is database name, root is username and password
-			PreparedStatement stmt=con.prepareStatement("select LiquorDescription,LiquorName,PriceOffered from LiquorInfo l inner join BarLiquorAssociative b where l.LiquorID = b.LiquorID and b.barID=1");
-		//	stmt.setString(1,org);
+			PreparedStatement stmt=con.prepareStatement("SELECT LIQUORNAME,LIQUORDESCRIPTION FROM BARLIQUORASSOCIATIVE BLA INNER JOIN BARAGENTS BA ON BLA.BARID=BA.BARID INNER JOIN LIQUORINFO L ON L.LIQUORID=BLA.LIQUORID WHERE BA.BARNAME=?");
+			stmt.setString(1,org);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next())  {
 				Offer temp = new Offer();
