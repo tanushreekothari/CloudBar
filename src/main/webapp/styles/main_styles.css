@@ -284,19 +284,19 @@ section
 	width: 163px;
 	height: 47px;
 	background: transparent;
-	border: solid 2px #c4ab9f;
+	border: solid 2px #108cb2;
 	text-align: center;
 }
 .button a
 {
 	display: block;
 	font-size: 18px;
-	color: #b49383;
+	color: #FF8C19;
 	line-height: 44px;
 }
 .button:hover
 {
-	background: #c4ab9f;
+	background: #FF8C19;
 }
 .button:hover a
 {
@@ -382,7 +382,7 @@ section
 }
 .main_nav ul li a:hover
 {
-	color: #b49383;
+	color: #FF8C19;
 }
 .reservations_phone
 {
@@ -1008,10 +1008,10 @@ section
 	height: 58px;
 	padding-left: 11px;
 	padding-right: 16px;
-	border: solid 2px #c4ab9f;
+	border: solid 2px #FF8C19;
 	font-size: 36px;
 	line-height: 54px;
-	color: #c4ab9f;
+	color: #FF8C19;
 }
 .dish_list
 {
@@ -1057,7 +1057,7 @@ section
 {
 	position: relative;
 	font-size: 18px;
-	color: #b49383;
+	color: #FF8C19;
 }
 .dish_order a::after
 {
@@ -1203,7 +1203,7 @@ section
 	font-size: 16px;
 	color: #FFFFFF;
 	line-height: 21px;
-	background: #c49a8f;
+	background: #FF8C19;
 	padding-left: 8px;
 	margin-right: 11px;
 }

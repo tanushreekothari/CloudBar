@@ -226,19 +226,19 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="col-lg-7">
 						<div class="sig_content">
 						<%OfferInfo obj = new OfferInfo(); %>
-							<div class="sig_subtitle page_subtitle">Deal of the day</div>
-							<div class="sig_title"><h1>Our Top Pick for You</h1></div>
-							<div class="rating_r sig_rating rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
-							<div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
-								<div class="sig_name" id ="disp2"><%=obj.getOfferDesc()%></div>
-								<div class="sig_price ml-auto" id ="disp1">$<%=obj.getOfferCost()%></div>
-							</div>
+            <div class="sig_subtitle page_subtitle">Deal of the day</div>
+            <div class="sig_title"><h1>Our Top Pick for You</h1></div>
+            <div class="rating_r sig_rating rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
+              <div class="sig_name" id ="disp2">JACK DANIEL'S OLD NO. 7 TENNESSEE WHISKEY 1.75L 80º</div>
+              <div class="sig_price ml-auto" id ="disp1">$36.19</div>
+            </div>
 
-							<div class="sig_content_list">
-								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li id ="disp">Beer</li>
-								</ul>
-							</div>
+            <div class="sig_content_list">
+              <ul class="d-flex flex-row align-items-center justify-content-start">
+                <li id ="disp">Whiskey</li>
+              </ul>
+            </div>
 							<div class="button sig_button trans_200"><a href="#">Redeem Offer</a></div>
 						</div>
 					</div>
