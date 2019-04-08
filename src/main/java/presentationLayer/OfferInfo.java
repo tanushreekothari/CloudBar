@@ -7,17 +7,21 @@ import businessLayer.Offer;
 import businessLayer.OfferInfoLogic;
 
 public class OfferInfo{
-	
+
 	public String getOfferDesc(){
 			OfferInfoLogic ol = new OfferInfoLogic();
 			return ol.getOfferInfo().get("offerdesc");
 	}
-	
+
 	public String getOfferCost(){
 		OfferInfoLogic ol = new OfferInfoLogic();
 		return ol.getOfferInfo().get("offercost");
 	}
-	
+	public String getOfferCategory(){
+		OfferInfoLogic ol = new OfferInfoLogic();
+		return ol.getOfferInfo().get("offercateg");
+	}
+
 	public HashMap<String,ArrayList<Offer>> getTopOffers(){
 		OfferInfoLogic ol = new OfferInfoLogic();
 		return ol.getTopOffersInfo();

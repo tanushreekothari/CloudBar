@@ -37,7 +37,7 @@ public class DatabaseConnection {
 			Connection con=DriverManager.getConnection(
 			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
 			//here cloudBar is database name, root is username and password
-			PreparedStatement stmt=con.prepareStatement("select li.LiquorName, b.PriceOffered from BarLiquorAssociative b inner join LiquorInfo li on b.LiquorID=li.LiquorID\n" +
+			PreparedStatement stmt=con.prepareStatement("select li.LiquorName, b.PriceOffered,li.LiquorDescription from BarLiquorAssociative b inner join LiquorInfo li on b.LiquorID=li.LiquorID\n" +
 					"inner join BarAgents ba\n" +
 					"on ba.BarID=b.BarID\n" +
 					"inner join Locations l\n" +
@@ -51,6 +51,7 @@ public class DatabaseConnection {
 			while(rs.next())  {
 			 map.put("offerdesc",rs.getString(1));
 			 map.put("offercost",rs.getInt(2)+"");
+			 map.put("offercateg",rs.getString(3));
 			}
 			con.close();
 			}
