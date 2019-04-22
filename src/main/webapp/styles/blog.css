@@ -273,7 +273,7 @@ section
 .page_subtitle
 {
 	font-family: 'Edward', sans-serif;
-	color: #b49383;
+	color: #FED097;
 	line-height: 0.75;
 }
 .button
@@ -391,7 +391,7 @@ section
 }
 .main_nav ul li a:hover
 {
-	color: #b49383;
+	color: #FF8C19;
 }
 .reservations_phone
 {
@@ -547,28 +547,28 @@ section
 {
 	color: rgba(255,255,255,1);
 }
-.menu_reservations_phone
-{
-	position: absolute;
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	-o-transform: translateX(-50%);
-	transform: translateX(-50%);
-	bottom: 40px;
-	height: 47px;
-	line-height: 43px;
-	padding-left: 25px;
-	padding-right: 20px;
-	text-align: center;
-	border: solid 2px #FFFFFF;
-	font-size: 16px;
-	font-weight: 700;
-	color: #FFFFFF;
-	white-space: nowrap;
+.menu_reservations_phone {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 100px;
+    height: 47px;
+    line-height: 43px;
+    padding-left: 25px;
+    padding-right: 20px;
+    text-align: center;
+    border: solid 2px #FF8C19;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    width: auto;
+    white-space: nowrap;
+    font-display: auto;
 }
-
 /*********************************
 5. Home
 *********************************/
@@ -587,7 +587,7 @@ section
 }
 .home_subtitle
 {
-	font-size: 48px;
+	font-size: 100px;
 	font-weight: bold;
 	line-height: 0.75;
 }
@@ -645,7 +645,7 @@ section
 	height: 48px;
 	background: #FFFFFF;
 	text-align: center;
-	border: solid 2px #c4ab9f;
+	border: solid 2px #FF8C19;
 }
 .blog_post_date a
 {
@@ -860,7 +860,7 @@ section
 	font-size: 16px;
 	color: #FFFFFF;
 	line-height: 21px;
-	background: #c49a8f;
+	background: #FF8C19;
 	padding-left: 8px;
 	margin-right: 11px;
 }
@@ -890,3 +890,27 @@ section
 		vertical-align: sub;
 border-style: none;
 }
+
+.menu_reservations_phone1
+{
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	bottom: 40px;
+	height: 47px;
+	line-height: 43px;
+	padding-left: 25px;
+	padding-right: 20px;
+	text-align: center;
+	border: solid 2px #FF8C19;
+	font-size: 16px;
+	font-weight: 700;
+	color: #FFFFFF;
+	white-space: nowrap;
+
+}
+

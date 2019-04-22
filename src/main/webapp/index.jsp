@@ -243,7 +243,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="themenu_title_bar_container">
-						<div class="themenu_stars text-center page_subtitle">Products</div>
+						<div class="themenu_stars text-center page_subtitle">Offers</div>
 						<div class="themenu_rating text-center">
 							<div class="rating_r rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
 						</div>

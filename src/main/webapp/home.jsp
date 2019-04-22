@@ -59,9 +59,9 @@ if(userName == null) response.sendRedirect("index.jsp");
 							<ul class="d-flex flex-row align-items-center justify-content-start">
 								<li><a href="#">home</a></li>
 								<li><a href="#">about us</a></li>
-								<li><a href="#">Products</a></li>
-								<li><a href="#">Offers</a></li>
-								<li><a href="#">blog</a></li>
+								<li><a href="products.jsp">Products</a></li>
+								<li><a href="offers.jsp">Offers</a></li>
+								<li><a href="blog.jsp">blog</a></li>
 								<li><a href="#">contact</a></li>
 							</ul>
 						</nav>
@@ -266,7 +266,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 			<div class="row">
 				<div class="col">
 					<div class="themenu_title_bar_container">
-						<div class="themenu_stars text-center page_subtitle">Products</div>
+						<div class="themenu_stars text-center page_subtitle">Offers</div>
 						<div class="themenu_rating text-center">
 							<div class="rating_r rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
 						</div>

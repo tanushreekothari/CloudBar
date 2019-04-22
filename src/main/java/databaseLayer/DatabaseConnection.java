@@ -2,9 +2,9 @@ package databaseLayer;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.LinkedHashMap;
 import businessLayer.Offer;
-import businessLayer.Product; 
+import businessLayer.Product;
 
 public class DatabaseConnection {
 	public HashMap<String, String> fetchPasswordAndName(String username) {

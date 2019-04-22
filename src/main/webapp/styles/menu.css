@@ -271,30 +271,29 @@ section
 {
 	padding: 0px !important;
 }
-.page_subtitle
-{
-	font-family: 'Edward', sans-serif;
-	color: #b49383;
-	line-height: 0.75;
+.page_subtitle {
+    font-family: 'Edward', sans-serif;
+    color: #FED097;
+    line-height: 0.75;
 }
 .button
 {
 	width: 163px;
 	height: 47px;
 	background: transparent;
-	border: solid 2px #c4ab9f;
+	border: solid 2px #108cb2;
 	text-align: center;
 }
 .button a
 {
 	display: block;
 	font-size: 18px;
-	color: #b49383;
+	color: #FFC819;
 	line-height: 44px;
 }
 .button:hover
 {
-	background: #c4ab9f;
+	background: #FF8C19;
 }
 .button:hover a
 {
@@ -302,7 +301,10 @@ section
 }
 .section_subtitle
 {
-	font-size: 36px;
+	font-size: 72px;
+	font-family: 'Edward', sans-serif;
+    color: #FF8C19;
+    line-height: 0.75;
 }
 .section_title
 {
@@ -330,9 +332,8 @@ section
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
 }
-.header.scrolled
-{
-	background: rgba(0,0,0,0.85);
+.header.scrolled {
+    background: rgba(16,140,178,0.85);
 }
 .header_content
 {
@@ -392,19 +393,18 @@ section
 }
 .main_nav ul li a:hover
 {
-	color: #b49383;
+	color: #FF8C19;
 }
-.reservations_phone
-{
-	height: 47px;
-	line-height: 43px;
-	padding-left: 25px;
-	padding-right: 20px;
-	text-align: center;
-	border: solid 2px #FFFFFF;
-	font-size: 16px;
-	font-weight: 700;
-	color: #FFFFFF;
+.reservations_phone {
+    height: 47px;
+    line-height: 43px;
+    padding-left: 25px;
+    padding-right: 20px;
+    text-align: center;
+    border: solid 2px #FF8C19;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
 }
 .hamburger_bar
 {
@@ -500,18 +500,17 @@ section
 4. Menu
 *********************************/
 
-.menu
-{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background: rgba(180,147,131,0.97);
-	z-index: 101;
-	visibility: hidden;
-	opacity: 0;
-	padding-bottom: 100px;
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(16,140,178,0.97);
+    z-index: 101;
+    visibility: hidden;
+    opacity: 0;
+    padding-bottom: 100px;
 }
 .menu.active
 {
@@ -548,7 +547,30 @@ section
 {
 	color: rgba(255,255,255,1);
 }
-.menu_reservations_phone
+.menu_reservations_phone {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 100px;
+    height: 47px;
+    line-height: 43px;
+    padding-left: 25px;
+    padding-right: 20px;
+    text-align: center;
+    border: solid 2px #FF8C19;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    width: auto;
+    white-space: nowrap;
+    font-display: auto;
+}
+
+.menu_reservations_phone1
 {
 	position: absolute;
 	left: 50%;
@@ -563,11 +585,12 @@ section
 	padding-left: 25px;
 	padding-right: 20px;
 	text-align: center;
-	border: solid 2px #FFFFFF;
+	border: solid 2px #FF8C19;
 	font-size: 16px;
 	font-weight: 700;
 	color: #FFFFFF;
 	white-space: nowrap;
+
 }
 
 /*********************************
@@ -586,11 +609,10 @@ section
 	left: 0;
 	width: 100%;
 }
-.home_subtitle
-{
-	font-size: 48px;
-	font-weight: bold;
-	line-height: 0.75;
+.home_subtitle {
+    font-size: 100px;
+    font-weight: bold;
+    line-height: 0.75;
 }
 .home_title
 {
@@ -644,16 +666,15 @@ section
 {
 	box-shadow: 0px 27px 40px rgba(0,0,0,0.13);
 }
-.themenu_col_title
-{
-	display: inline-block;
-	height: 58px;
-	padding-left: 11px;
-	padding-right: 16px;
-	border: solid 2px #c4ab9f;
-	font-size: 36px;
-	line-height: 54px;
-	color: #c4ab9f;
+.themenu_col_title {
+    display: inline-block;
+    height: 58px;
+    padding-left: 11px;
+    padding-right: 16px;
+    border: solid 2px #FF8C19;
+    font-size: 36px;
+    line-height: 54px;
+    color: #FF8C19;
 }
 .dish_list
 {
@@ -695,11 +716,10 @@ section
 {
 	margin-top: 10px;
 }
-.dish_order a
-{
-	position: relative;
-	font-size: 18px;
-	color: #b49383;
+.dish_order a {
+    position: relative;
+    font-size: 18px;
+    color: #FF8C19;
 }
 .dish_order a::after
 {
@@ -754,7 +774,7 @@ section
 	content: "\f006";
 	font-style: normal;
 	font-size: 10px;
-	color: #d6baa0;
+	color: #FF8C19;
 }
 .rating_r i:not(:last-child)
 {
@@ -935,16 +955,15 @@ section
 {
 	margin-bottom: 15px;
 }
-.footer_contact_title
-{
-	width: 61px;
-	height: 21px;
-	font-size: 16px;
-	color: #FFFFFF;
-	line-height: 21px;
-	background: #c49a8f;
-	padding-left: 8px;
-	margin-right: 11px;
+.footer_contact_title {
+    width: 61px;
+    height: 21px;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 21px;
+    background: #FF8C19;
+    padding-left: 8px;
+    margin-right: 11px;
 }
 .footer_contact_text
 {
@@ -955,4 +974,11 @@ section
 .footer_contact ul li div:last-child
 {
 	white-space: nowrap;
+}
+
+.reservations_phone a {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
 }
