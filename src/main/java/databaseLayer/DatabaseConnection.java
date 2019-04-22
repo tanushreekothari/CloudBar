@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import businessLayer.Offer;
 import businessLayer.Product;
 import businessLayer.User;
+import businessLayer.Blog;
 
 public class DatabaseConnection {
 	public HashMap<String, String> fetchPasswordAndName(String username) {
@@ -221,4 +222,29 @@ public boolean insertUserDetails(User user) {
 		{ System.out.println(e);}
 		return false;
 	}
+	public ArrayList<Blog> fetchAllBlogs(){
+			ArrayList<Blog> list = new ArrayList<Blog>();
+			try{
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con=DriverManager.getConnection(
+				"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
+			//here cloudBar is database name, root is username and password
+				PreparedStatement stmt=con.prepareStatement("SELECT blogDate, blogTitle,blogAuthor,blogContent FROM userblog limit 6");
+			//	stmt.setString(1,org);
+				ResultSet rs=stmt.executeQuery();
+				while(rs.next())  {
+					Blog temp = new Blog();
+					temp.setTitle(rs.getString(2));
+					temp.setAuthor(rs.getString(3));
+					temp.setContent(rs.getString(4));
+					temp.setDate(rs.getString(1));
+				 list.add(temp);
+				}
+				con.close();
+				}
+			catch(Exception e)
+			{ System.out.println(e);}
+			return list;
+		}
+
 }

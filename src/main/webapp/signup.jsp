@@ -30,11 +30,13 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
+<% String message = (String)request.getAttribute("alertMsg");
+if(message == null){message ="";}%>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="SignUpServlet"  method="post"">
+				<div style="margin:auto;"><font style=""font-size:0.8em; color:red;"><%=message%></font></div>
 					<span class="login100-form-title p-b-34">
 
 						<br/>
@@ -93,7 +95,7 @@
 					<div class="w-full text-center">
 						<br/>
 						Already have an account?
-						<a href="index1.html" class="txt3">
+						<a href="login.jsp" class="txt3">
 							Log In
 						</a>
 					</div>

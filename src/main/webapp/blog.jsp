@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ page import="presentationLayer.BlogInfo"%>
+<%@ page import="businessLayer.Blog"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +51,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="#intro">about us</a></li>
+								<li><a href="about.jsp">about</a></li>
 								<li><a href="products.jsp">Products</a></li>
 								<li><a href="offers.jsp">Offers</a></li>
 								<li><a href="blog.jsp">blog</a></li>
@@ -90,7 +93,8 @@ if(userName == null) response.sendRedirect("index.jsp");
 	<div class="menu trans_800">
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
 			<ul>
-				<li><a href="#intro">about us</a></li>
+				<li><a href="home.jsp">Home</a></li>
+  				<li><a href="about.jsp">about</a></li>
 				<li><a href="products.jsp">Products</a></li>
 				<li><a href="offers.jsp">Offers</a></li>
 				<li><a href="blog.jsp">blog</a></li>
@@ -129,23 +133,24 @@ if(userName == null) response.sendRedirect("index.jsp");
 	<div class="blog">
 		<div class="container">
 			<div class="row">
-
+				<%BlogInfo bi = new BlogInfo();
+				ArrayList<Blog> blogs = bi.getAllBlogs();%>
 				<!-- Blog Post -->
 				<div class="col-lg-6 blog_col">
 					<div class="blog_post">
 						<div class="blog_post_image_container">
 							<div class="blog_post_image"><img src="images/blog_1.jpg" alt="https://unsplash.com/@patrick_schneider"></div>
-							<div class="blog_post_date"><a href="#">March 18, 2019</a></div>
+							<div class="blog_post_date"><a href="#"><%=blogs.get(0).getDate() %></a></div>
 						</div>
 						<div class="blog_post_content">
-							<div class="blog_post_title"><a href="#">Spring Break To Try List</a></div>
+							<div class="blog_post_title"><a href="#"><%=blogs.get(0).getTitle() %></a></div>
 							<div class="blog_post_info">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li>by <a href="#">Barty</a></li>
+									<li>by <a href="#"><%=blogs.get(0).getAuthor()%></a></li>
 								</ul>
 							</div>
 							<div class="blog_post_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti.</p>
+								<p><%=blogs.get(0).getContent()%></p>
 							</div>
 						</div>
 					</div>
@@ -156,18 +161,17 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="blog_post">
 						<div class="blog_post_image_container">
 							<div class="blog_post_image"><img src="images/blog_2.jpg" alt="https://unsplash.com/@tashytown"></div>
-							<div class="blog_post_date"><a href="#">March 15, 2019</a></div>
+							<div class="blog_post_date"><a href="#"><%=blogs.get(1).getDate() %></a></div>
 						</div>
 						<div class="blog_post_content">
-							<div class="blog_post_title"><a href="#">French Quarter Carnival Cocktails</a></div>
+							<div class="blog_post_title"><a href="#"><%=blogs.get(1).getTitle() %></a></div>
 							<div class="blog_post_info">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li>by <a href="#">Barty</a></li>
+									<li>by <a href="#"><%=blogs.get(1).getAuthor()%></a></li>
 								</ul>
 							</div>
 							<div class="blog_post_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti.</p>
-							</div>
+								<p><%=blogs.get(1).getContent()%></p></div>
 						</div>
 					</div>
 				</div>
@@ -177,20 +181,17 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="blog_post">
 						<div class="blog_post_image_container">
 							<div class="blog_post_image"><img src="images/blog_3.jpg" alt="https://unsplash.com/@stefanjonhson"></div>
-							<div class="blog_post_date"><a href="#">March 5, 2019</a></div>
+							<div class="blog_post_date"><a href="#"><%=blogs.get(2).getDate() %></a></div>
 						</div>
 						<div class="blog_post_content">
-							<div class="blog_post_title"><a href="#">Our Nomenee at the Restaurants Awards</a></div>
+							<div class="blog_post_title"><a href="#"><%=blogs.get(2).getTitle() %></a></div>
 							<div class="blog_post_info">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li>by <a href="#">George Smith</a></li>
-									<li>in <a href="#">Lifestyle</a></li>
-									<li><a href="#">2 Comments</a></li>
+									<li>by <a href="#"><%=blogs.get(2).getAuthor()%></a></li>
 								</ul>
 							</div>
 							<div class="blog_post_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti.</p>
-							</div>
+								<p><%=blogs.get(2).getContent()%></p></div>
 						</div>
 					</div>
 				</div>
@@ -200,20 +201,17 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="blog_post">
 						<div class="blog_post_image_container">
 							<div class="blog_post_image"><img src="images/blog_4.jpg" alt="Jackelin Slack"></div>
-							<div class="blog_post_date"><a href="#">June 18, 2018</a></div>
+							<div class="blog_post_date"><a href="#"><%=blogs.get(3).getDate() %></a></div>
 						</div>
 						<div class="blog_post_content">
-							<div class="blog_post_title"><a href="#">Our Nomenee at the Restaurants Awards</a></div>
+							<div class="blog_post_title"><a href="#"><%=blogs.get(3).getTitle() %></a></div>
 							<div class="blog_post_info">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li>by <a href="#">George Smith</a></li>
-									<li>in <a href="#">Lifestyle</a></li>
-									<li><a href="#">2 Comments</a></li>
+									<li>by <a href="#"><%=blogs.get(3).getAuthor()%></a></li>
 								</ul>
 							</div>
 							<div class="blog_post_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti.</p>
-							</div>
+								<p><%=blogs.get(3).getContent()%></p></div>
 						</div>
 					</div>
 				</div>
@@ -223,20 +221,17 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="blog_post">
 						<div class="blog_post_image_container">
 							<div class="blog_post_image"><img src="images/blog_5.jpg" alt="https://unsplash.com/@mantra_media_ltd"></div>
-							<div class="blog_post_date"><a href="#">June 18, 2018</a></div>
+							<div class="blog_post_date"><a href="#"><%=blogs.get(4).getDate() %></a></div>
 						</div>
 						<div class="blog_post_content">
-							<div class="blog_post_title"><a href="#">Our Nomenee at the Restaurants Awards</a></div>
+							<div class="blog_post_title"><a href="#"><%=blogs.get(4).getTitle() %></a></div>
 							<div class="blog_post_info">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li>by <a href="#">George Smith</a></li>
-									<li>in <a href="#">Lifestyle</a></li>
-									<li><a href="#">2 Comments</a></li>
+									<li>by <a href="#"><%=blogs.get(4).getAuthor()%></a></li>
 								</ul>
 							</div>
 							<div class="blog_post_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti.</p>
-							</div>
+								<p><%=blogs.get(4).getContent()%></p></div>
 						</div>
 					</div>
 				</div>
@@ -246,20 +241,17 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="blog_post">
 						<div class="blog_post_image_container">
 							<div class="blog_post_image"><img src="images/blog_6.jpg" alt="https://unsplash.com/@brookelark"></div>
-							<div class="blog_post_date"><a href="#">June 18, 2018</a></div>
+							<div class="blog_post_date"><a href="#"><%=blogs.get(5).getDate() %></a></div>
 						</div>
 						<div class="blog_post_content">
-							<div class="blog_post_title"><a href="#">Our Nomenee at the Restaurants Awards</a></div>
+							<div class="blog_post_title"><a href="#"><%=blogs.get(5).getTitle() %></a></div>
 							<div class="blog_post_info">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li>by <a href="#">George Smith</a></li>
-									<li>in <a href="#">Lifestyle</a></li>
-									<li><a href="#">2 Comments</a></li>
+									<li>by <a href="#"><%=blogs.get(5).getAuthor()%></a></li>
 								</ul>
 							</div>
 							<div class="blog_post_text">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio. Suspendisse potenti.</p>
-							</div>
+								<p><%=blogs.get(5).getContent()%></p></div>
 						</div>
 					</div>
 				</div>

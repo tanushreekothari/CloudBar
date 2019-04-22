@@ -52,14 +52,14 @@ if(userName == null) response.sendRedirect("index.jsp");
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="logo">
-							<a href="#">
+							<a href="home.jsp">
 								<div>Cloud Bar <img src="cloud.png" alt="CloudBarLogo"></div>
 								<div></div>
 							</a>
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="#intro">about us</a></li>
+								<li><a href="about.jsp">about</a></li>
 								<li><a href="products.jsp">Products</a></li>
 								<li><a href="offers.jsp">Offers</a></li>
 								<li><a href="blog.jsp">blog</a></li>
@@ -102,7 +102,8 @@ if(userName == null) response.sendRedirect("index.jsp");
 	 <div class="menu trans_800">
   		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
   			<ul>
-  				<li><a href="#intro">about us</a></li>
+  				<li><a href="home.jsp">Home</a></li>
+  				<li><a href="about.jsp">about</a></li>
 				<li><a href="products.jsp">Products</a></li>
 				<li><a href="offers.jsp">Offers</a></li>
 				<li><a href="blog.jsp">blog</a></li>

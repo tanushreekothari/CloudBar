@@ -42,7 +42,7 @@
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="login.jsp">about us</a></li>
+								<li><a href="login.jsp">about</a></li>
 								<li><a href="login.jsp">Products</a></li>
 								<li><a href="login.jsp">Offers</a></li>
 								<li><a href="login.jsp">blog</a></li>
@@ -50,7 +50,7 @@
 							</ul>
 						</nav>
 						<div class="reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
-						<div class="reservations_phone ml-auto"><a href="signup.html">SIGN UP</a></div>
+						<div class="reservations_phone ml-auto"><a href="signup.jsp">SIGN UP</a></div>
 
 					</div>
 				</div>
@@ -79,7 +79,8 @@
 	<div class="menu trans_800">
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
 			<ul>
-				<li><a href="login.jsp">about us</a></li>
+				<li><a href="home.jsp">Home</a></li>
+  				<li><a href="about.jsp">about</a></li>
 				<li><a href="login.jsp">Products</a></li>
 				<li><a href="login.jsp">Offers</a></li>
 				<li><a href="login.jsp">blog</a></li>
@@ -87,7 +88,7 @@
 			</ul>
 		</div>
 		<div class="menu_reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
-		<div class="menu_reservations_phone1 ml-auto"><a href="signup.html">SIGN UP</a></div>
+		<div class="menu_reservations_phone1 ml-auto"><a href="signup.jsp">SIGN UP</a></div>
 	</div>
 
 	<!-- Home -->
