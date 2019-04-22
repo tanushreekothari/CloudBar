@@ -29,7 +29,18 @@
 </style>
 </head>
 <body>
+<%
+String userName = null;
+Cookie[] cookies = request.getCookies();
+if(cookies !=null){
+for(Cookie cookie : cookies){
+	if(cookie.getName().equals("user")) userName = cookie.getValue();
+}
+}
 
+if(userName == null) response.sendRedirect("index.jsp");
+
+%>
 <div class="super_container">
 	
 	<!-- Header -->
@@ -40,19 +51,18 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="logo">
-							<a href="#">
+							<a href="home.jsp">
 								<div>Cloud Bar <img src="cloud.png" alt="CloudBarLogo"></div>
 								<div></div>
 							</a>
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="#">home</a></li>
-								<li><a href="#">about us</a></li>
-								<li><a href="menu.html">Products</a></li>
-								<li><a href="#">Offers</a></li>
-								<li><a href="#">blog</a></li>
-								<li><a href="#">contact</a></li>
+								<li><a href="about.jsp">about</a></li>
+								<li><a href="products.jsp">Products</a></li>
+								<li><a href="offers.jsp">Offers</a></li>
+								<li><a href="blog.jsp">blog</a></li>
+								<li><a href="contact.jsp">contact</a></li>
 							</ul>
 						</nav>
 						<div class="reservations_phone ml-auto" style=" border: none;"><a href="">Welcome <%=userName %></a></div>
@@ -91,12 +101,12 @@
 	 <div class="menu trans_800">
   		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
   			<ul>
-  				<li><a href="home.jsp">home</a></li>
-  				<li><a href="#">about us</a></li>
-  				<li><a href="#">Products</a></li>
-  				<li><a href="#">Offers</a></li>
-  				<li><a href="">blog</a></li>
-  				<li><a href="">contact</a></li>
+  				<li><a href="home.jsp">Home</a></li>
+  								<li><a href="about.jsp">about</a></li>
+								<li><a href="products.jsp">Products</a></li>
+								<li><a href="offers.jsp">Offers</a></li>
+								<li><a href="blog.jsp">blog</a></li>
+								<li><a href="contact.jsp">contact</a></li>
   			</ul>
   		</div>
   		<div class="menu_reservations_phone ml-auto"><a style="color:white" href="">Hi <%=userName %></a></div>

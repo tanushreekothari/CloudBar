@@ -170,7 +170,7 @@ if(userName == null) response.sendRedirect("index.jsp");
                             </select>
 
                         </div>
-                        <div >
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <button type="button" class="btn btn-danger wrn-btn">Search</button>
                         </div>
                     </div>
