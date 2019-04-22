@@ -43,7 +43,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 <div class="super_container">
 
 	<!-- Header -->
-
+<input type="hidden" id="userid" name="userId" value="<%=userName%>>">
 	<header class="header">
 		<div class="container">
 			<div class="row">
@@ -57,7 +57,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="about.jsp">about us</a></li>
+								<li><a href="about.jsp">about</a></li>
 								<li><a href="products.jsp">Products</a></li>
 								<li><a href="offers.jsp">Offers</a></li>
 								<li><a href="blog.jsp">blog</a></li>
@@ -136,7 +136,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 	</div>
 <section class="search-sec">
     <div class="container">
-        <form action="#" method="post" novalidate="novalidate">
+        <form action="ProductServlet" method="post" novalidate="novalidate">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">

@@ -33,7 +33,7 @@ public class SignUpServlet extends HttpServlet {
 			//setting cookie to expiry in 30 mins
 			loginCookie.setMaxAge(30*60);
 			response.addCookie(loginCookie);
-			response.sendRedirect("successsignup.jsp");
+			response.sendRedirect("successignup.jsp");
 		}else{
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/signup.jsp");
 			request.setAttribute("alertMsg", "Cheers! You are already part of the Cloud Bar community. Please LogIn to continue!");
