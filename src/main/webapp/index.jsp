@@ -42,12 +42,11 @@
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="#">home</a></li>
-								<li><a href="#">about us</a></li>
-								<li><a href="#">Products</a></li>
-								<li><a href="#">Offers</a></li>
-								<li><a href="#">blog</a></li>
-								<li><a href="#">contact</a></li>
+								<li><a href="#intro">about us</a></li>
+								<li><a href="products.jsp">Products</a></li>
+								<li><a href="offers.jsp">Offers</a></li>
+								<li><a href="blog.jsp">blog</a></li>
+								<li><a href="contact.jsp">contact</a></li>
 							</ul>
 						</nav>
 						<div class="reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
@@ -80,12 +79,11 @@
 	<div class="menu trans_800">
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
 			<ul>
-				<li><a href="index.html">home</a></li>
-				<li><a href="about.html">about us</a></li>
-				<li><a href="menu.html">Products</a></li>
-				<li><a href="#">Offers</a></li>
-				<li><a href="blog.html">blog</a></li>
-				<li><a href="contact.html">contact</a></li>
+				<li><a href="#intro">about us</a></li>
+				<li><a href="products.jsp">Products</a></li>
+				<li><a href="offers.jsp">Offers</a></li>
+				<li><a href="blog.jsp">blog</a></li>
+				<li><a href="contact.jsp">contact</a></li>
 			</ul>
 		</div>
 		<div class="menu_reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
