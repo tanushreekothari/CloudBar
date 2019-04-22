@@ -8,9 +8,9 @@ import businessLayer.ProductLogic;
 
 public class ProductInfo {
 	
-	public LinkedHashMap<String,ArrayList<Product>> getAllProducts(){
+	public LinkedHashMap<String,ArrayList<Product>> getAllProducts(String product, String city){
 		ProductLogic pl = new ProductLogic();
-		return pl.getAllProducts();
+		return pl.getAllProducts(product,city);
 	}
 
 }

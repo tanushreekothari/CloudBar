@@ -167,7 +167,7 @@ public class DatabaseConnection {
 		System.out.print(list.get(0));
 		return list;
 	}
-	public LinkedHashMap<String,ArrayList<Product>> fetchAllProducts(){
+	public LinkedHashMap<String,ArrayList<Product>> fetchAllProducts(String product, String city){
 	LinkedHashMap<String,ArrayList<Product>> mapProducts = new LinkedHashMap<String,ArrayList<Product>>();
 	mapProducts.put("Vodka",fetchProducts("Vodka"));
 	mapProducts.put("Whiskey",fetchProducts("Whiskey"));

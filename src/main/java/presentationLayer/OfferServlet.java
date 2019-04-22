@@ -25,28 +25,26 @@ public class OfferServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		boolean flag = true;
-		try {
-		// get request parameters for userID and password
-		System.out.println("I am here testing search functionality");
+		
 		String product = request.getParameter("product");
 		String city = request.getParameter("city");
-		String userName = request.getParameter("userId");
-		
-		System.out.println("I am here testing search functionality"+product);
-			Cookie prodCookie = new Cookie("product",product);
-			Cookie cityCookie = new Cookie("city",city);
-			Cookie loginCookie = new Cookie("user",userName);
+		String userName = null;
+		Cookie[] cookies = request.getCookies();
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("user")) userName = cookie.getValue();
+		}
+		Cookie loginCookie = new Cookie("user",userName);
 			//setting cookie to expiry in 30 mins
-			loginCookie.setMaxAge(30*60);
-			response.addCookie(prodCookie);
+		loginCookie.setMaxAge(30*60);
+		response.addCookie(loginCookie);
+		if(null!=city) {
+			Cookie cityCookie = new Cookie("city",city);
 			response.addCookie(cityCookie);
-			response.addCookie(loginCookie);
-			response.sendRedirect("about.jsp");
 		}
-		catch(Exception e) {
-			System.out.print(e);
+		if(null!=product) {
+			Cookie prodCookie = new Cookie("product",product);
+			response.addCookie(prodCookie);
 		}
-		
-
+		response.sendRedirect("products.jsp");
 	}
 }

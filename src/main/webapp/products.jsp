@@ -32,10 +32,14 @@
 <body>
 <%
 String userName = null;
+String product = null;
+String city = null;
 Cookie[] cookies = request.getCookies();
 if(cookies !=null){
 for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
+	if(cookie.getName().equals("product")) product = cookie.getValue();
+	if(cookie.getName().equals("city")) city = cookie.getValue();
 }
 }
 
@@ -162,7 +166,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 				</div>
 			</div>
 			<%  ProductInfo obj = new ProductInfo();
-			HashMap<String,ArrayList<Product>> products=  obj.getAllProducts(); 
+			HashMap<String,ArrayList<Product>> products=  obj.getAllProducts(product,city); 
 			%>
 			<div class="row themenu_row">
 				<!-- Starters -->

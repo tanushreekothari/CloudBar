@@ -36,10 +36,9 @@ for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
 }
 }
-
 if(userName == null) response.sendRedirect("index.jsp");
-
 %>
+
 <div class="super_container">
 
 	<!-- Header -->
@@ -137,6 +136,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 <section class="search-sec">
     <div class="container">
         <form action="OfferServlet" method="post">
+        
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
@@ -171,7 +171,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                            <input type="submit" value="Search" class="btn btn-danger wrn-btn" >
                         </div>
                     </div>
                 </div>
@@ -180,6 +180,7 @@ if(userName == null) response.sendRedirect("index.jsp");
     </div>
 </section>
 	<!-- Intro -->
+	
 
 	<div class="intro">
 		<div class="container">
