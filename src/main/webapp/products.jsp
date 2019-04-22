@@ -32,13 +32,13 @@
 <body>
 <%
 String userName = null;
-String product = null;
+String productVar = null;
 String city = null;
 Cookie[] cookies = request.getCookies();
 if(cookies !=null){
 for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
-	if(cookie.getName().equals("product")) product = cookie.getValue();
+	if(cookie.getName().equals("product")) productVar = cookie.getValue();
 	if(cookie.getName().equals("city")) city = cookie.getValue();
 }
 }
@@ -70,7 +70,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 								<li><a href="contact.jsp">contact</a></li>
 							</ul>
 						</nav>
-						<div class="reservations_phone ml-auto" style=" border: none;"><a href="">Welcome <%=userName %></a></div>
+						<div class="reservations_phone ml-auto" style=" border: none;"><a href="profile.jsp">Welcome <%=userName %></a></div>
 						<form action="LogoutServlet" method="post"><div class="reservations_phone ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -166,7 +166,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 				</div>
 			</div>
 			<%  ProductInfo obj = new ProductInfo();
-			HashMap<String,ArrayList<Product>> products=  obj.getAllProducts(product,city); 
+			HashMap<String,ArrayList<Product>> products=  obj.getAllProducts(productVar,city); 
 			%>
 			<div class="row themenu_row">
 				<!-- Starters -->
