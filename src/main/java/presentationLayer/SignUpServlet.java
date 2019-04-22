@@ -22,7 +22,7 @@ public class SignUpServlet extends HttpServlet {
 		User userProfile = new User();
 		userProfile.setUserName(request.getParameter("username"));
 		userProfile.setPassword(request.getParameter("pass"));
-		userProfile.setEmailId(request.getParameter("pass"));
+		userProfile.setEmailId(request.getParameter("email"));
 		userProfile.setContact(request.getParameter("contact"));
 		userProfile.setFirstName(request.getParameter("firstname"));
 		userProfile.setLastName(request.getParameter("lastname"));
