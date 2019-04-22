@@ -155,7 +155,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 					</div>
 					<div class="row">
 						<div class="col-lg-8">
-							<div class="intro_image"><img src="images/barty.jpg" alt="https://unsplash.com/@quanle2819"></div>
+							<div class="intro_image"><img src="images/Barty.jpg" alt="https://unsplash.com/@quanle2819"></div>
 						</div>
 					</div>
 				</div>	
