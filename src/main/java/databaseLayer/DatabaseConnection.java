@@ -7,16 +7,15 @@ import businessLayer.Offer;
 import businessLayer.Product;
 import businessLayer.User;
 import businessLayer.Blog;
-import businessLayer.User; 
+import businessLayer.User;
 public class DatabaseConnection {
 	public HashMap<String, String> fetchPasswordAndName(String username) {
 		HashMap<String, String> map  = new HashMap<String, String>();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
-			//here cloudBar is database name, root is username and password
-			PreparedStatement stmt=con.prepareStatement("select password,firstname from userprofile where username=?");
+			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("select password,firstname from userprofile where emailid=?");
 			stmt.setString(1,username);
 			ResultSet rs=stmt.executeQuery();
 			while(rs.next())  {
@@ -26,10 +25,7 @@ public class DatabaseConnection {
 			con.close();
 			}
 		catch(Exception e)
-		{ System.out.println(e);
-			map.put("pass","pass");
-			map.put("name","Trish");
-		}
+		{ System.out.println(e);}
 		System.out.print(map.get("pass"));
 		return map;
 	}
@@ -199,19 +195,17 @@ public ArrayList<Product> fetchProducts(String prodCateg){
 	return list;
 }
 public boolean insertUserDetails(User user) {
-		HashMap<String, String> map  = new HashMap<String, String>();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
+			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
 			//here cloudBar is database name, root is username and password
-			PreparedStatement stmt=con.prepareStatement("insert into userprofile values (?,?,?,?,?,?,current_date())");
+			PreparedStatement stmt=con.prepareStatement("insert into userprofile values (?,?,?,?,?,current_date())");
 			stmt.setString(1,user.getEmailId());
-			stmt.setString(2,user.getUserName());
-			stmt.setString(3,user.getFirstName());
-			stmt.setString(4,user.getLastName());
-			stmt.setString(5,user.getPassword());
-			stmt.setString(6,user.getContact());
+			stmt.setString(2,user.getFirstName());
+			stmt.setString(3,user.getLastName());
+			stmt.setString(4,user.getPassword());
+			stmt.setString(5,user.getContact());
 			int i=stmt.executeUpdate();
 			if(i==1) {
 				return true;
