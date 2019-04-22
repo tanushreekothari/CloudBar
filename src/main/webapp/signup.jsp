@@ -46,8 +46,8 @@ if(message == null){message ="";}%>
 					 <div>Account Sign Up</div>
 					</span>
 
-					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="first-name" class="input100" type="text" name="username" placeholder="User name">
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type EmailId">
+						<input class="input100" type="email" name="email" placeholder="Email Id">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type first name">
@@ -67,10 +67,7 @@ if(message == null){message ="";}%>
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type EmailId">
-						<input class="input100" type="email" name="email" placeholder="Email Id">
-						<span class="focus-input100"></span>
-					</div>
+					
 					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type ContactNo">
 						<input class="input100" type="tel" name="contact" pattern="^\d{3}-\d{3}-\d{4}$" required placeholder="Contact Number: xxx-xxx-xxxx" >
 						<span class="focus-input100"></span>

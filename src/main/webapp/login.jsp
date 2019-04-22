@@ -47,8 +47,8 @@ if(message == null){message ="";}%>
 						<div>Account Login</div>
 					</span>
 
-					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="first-name" class="input100" type="text" name="username" placeholder="User name">
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type Email ID">
+						<input id="first-name" class="input100" type="text" name="username" placeholder="Email ID">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
@@ -68,7 +68,7 @@ if(message == null){message ="";}%>
 						</span>
 
 						<a href="#" class="txt2">
-							User name / password?
+							password?
 						</a>
 					</div>
 

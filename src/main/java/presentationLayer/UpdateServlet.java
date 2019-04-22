@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import businessLayer.LoginAuthentication;
+import businessLayer.User;
+import businessLayer.UserProfileLogic;
 /**
  * Servlet implementation class LoginServlet
  */
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet{
+@WebServlet("/UpdateServlet")
+public class UpdateServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	//private final String password = "pass";
 
@@ -26,28 +28,32 @@ public class LoginServlet extends HttpServlet{
 			HttpServletResponse response) throws ServletException, IOException {
 		boolean flag = true;
 		// get request parameters for userID and password
-		String user = request.getParameter("username");
-		String pwd = request.getParameter("pass");
-		System.out.println("username:"+user);
-		LoginAuthentication la = new LoginAuthentication();
-		HashMap<String, String> map = la.fetchPasswordAndName(user);
-		if(map.get("pass").isEmpty()) {
-			flag = false;
-		}
 		
-		if(flag == true && map.get("pass").equals(pwd)){
-			Cookie loginCookie = new Cookie("user",map.get("name"));
-			Cookie loginCookie1 = new Cookie("emailId",user);
+		String emailId = null;
+		Cookie[] cookies = request.getCookies();
+		if(cookies !=null){
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("emailId")) emailId = cookie.getValue();
+		}
+		}
+		User user = new User();
+		user.setFirstName(request.getParameter("firstname"));
+		user.setLastName(request.getParameter("lastname"));
+		user.setPassword(request.getParameter("pass"));
+		user.setContact(request.getParameter("contact"));
+		user.setEmailId(emailId);
+		UserProfileLogic upperInfo = new UserProfileLogic();
+		
+		if(upperInfo.updateUserDetails(user)){
+			Cookie loginCookie = new Cookie("user",user.getFirstName());
+			Cookie loginCookie1 = new Cookie("emailId",emailId);
 			//setting cookie to expiry in 30 mins
 			loginCookie.setMaxAge(30*60);
 			response.addCookie(loginCookie);
 			response.addCookie(loginCookie1);
-			response.sendRedirect("success.jsp");
-		}else{
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
-			request.setAttribute("alertMsg", "Either user name or password is incorrect");
-			rd.include(request, response);
+			
 		}
+		response.sendRedirect("profile.jsp");
 
 	}
 }

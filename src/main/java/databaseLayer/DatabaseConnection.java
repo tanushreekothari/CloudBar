@@ -7,7 +7,7 @@ import businessLayer.Offer;
 import businessLayer.Product;
 import businessLayer.User;
 import businessLayer.Blog;
-
+import businessLayer.User; 
 public class DatabaseConnection {
 	public HashMap<String, String> fetchPasswordAndName(String username) {
 		HashMap<String, String> map  = new HashMap<String, String>();
@@ -246,5 +246,52 @@ public boolean insertUserDetails(User user) {
 			{ System.out.println(e);}
 			return list;
 		}
+		public User fetchUserDetails(String emailId) {
+	User user = new User();
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection(
+				"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+				//here cloudBar is database name, root is username and password
+		PreparedStatement stmt=con.prepareStatement("select firstname, lastname, password, contactnumber,registrationDate from userprofile where emailid=?");
+		stmt.setString(1,emailId);
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())  {
+			user.setFirstName(rs.getString(1));
+			user.setLastName(rs.getString(2));
+			user.setPassword(rs.getString(3));
+			user.setContact(rs.getString(4));
+			user.setDate(rs.getString(5));
+		}
+		con.close();
+		}
+	catch(Exception e)
+	{ System.out.println(e);}
+	return user;
+}
+public boolean updateUserDetails(User user) {
+	try{
+		System.out.println("I am updating records");
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection(
+				"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+				//here cloudBar is database name, root is username and password
+		PreparedStatement stmt=con.prepareStatement("UPDATE userprofile SET firstname=?, lastname=?, password=?, contactnumber=? WHERE emailid =?");
+		stmt.setString(1,user.getFirstName());
+		stmt.setString(2,user.getLastName());
+		stmt.setString(3,user.getPassword());
+		stmt.setString(4,user.getContact());
+		stmt.setString(5,user.getEmailId());
+		int i=stmt.executeUpdate();
+		if(i==1) {
+			System.out.print(i);
+			return true;
+		}
+		con.close();
+		}
+	catch(Exception e)
+	{ System.out.println(e);}
+	return false;
+}
 
 }

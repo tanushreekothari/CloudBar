@@ -20,19 +20,19 @@ public class SignUpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		User userProfile = new User();
-		userProfile.setUserName(request.getParameter("username"));
 		userProfile.setPassword(request.getParameter("pass"));
 		userProfile.setEmailId(request.getParameter("email"));
 		userProfile.setContact(request.getParameter("contact"));
 		userProfile.setFirstName(request.getParameter("firstname"));
 		userProfile.setLastName(request.getParameter("lastname"));
-		System.out.println("username:"+userProfile.getUserName());
 		UserProfileLogic profile = new UserProfileLogic();
 		if(profile.createUserProfile(userProfile)){
 			Cookie loginCookie = new Cookie("user",userProfile.getFirstName());
+			Cookie loginCookie1 = new Cookie("username",userProfile.getEmailId());
 			//setting cookie to expiry in 30 mins
 			loginCookie.setMaxAge(30*60);
 			response.addCookie(loginCookie);
+			response.addCookie(loginCookie1);
 			response.sendRedirect("successignup.jsp");
 		}else{
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/signup.jsp");

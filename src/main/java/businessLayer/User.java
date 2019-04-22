@@ -1,10 +1,16 @@
 package businessLayer;
 
 public class User {
-		private String userName;
 		private String password;
 		private String emailId;
 		private String contact;
+		private String date;
+		public String getDate() {
+			return date;
+		}
+		public void setDate(String date) {
+			this.date = date;
+		}
 		public String getFirstName() {
 			return firstName;
 		}
@@ -19,12 +25,6 @@ public class User {
 		}
 		private String firstName;
 		private String lastName;
-		public String getUserName() {
-			return userName;
-		}
-		public void setUserName(String userName) {
-			this.userName = userName;
-		}
 		public String getPassword() {
 			return password;
 		}

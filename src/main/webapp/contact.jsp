@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="presentationLayer.ProductInfo"%>
-<%@ page import="java.util.*" %>
-<%@ page import="businessLayer.Product"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +17,7 @@
 <link href="plugins/jquery-timepicker/jquery.timepicker.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/menu.css">
 <link rel="stylesheet" type="text/css" href="styles/menu_responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/contactus.css">
 <style>
 .logo img {
     width: 100px;
@@ -27,22 +25,22 @@
     vertical-align: sub;
     border-style: none;
 }
+
 </style>
 </head>
 <body>
 <%
 String userName = null;
-String productVar = null;
-String city = null;
+String emailId = null;
 Cookie[] cookies = request.getCookies();
 if(cookies !=null){
 for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
-	if(cookie.getName().equals("product")) productVar = cookie.getValue();
-	if(cookie.getName().equals("city")) city = cookie.getValue();
+	if(cookie.getName().equals("emailId")) emailId = cookie.getValue();
 }
 }
 
+System.out.println(emailId);
 if(userName == null) response.sendRedirect("index.jsp");
 
 %>
@@ -63,14 +61,14 @@ if(userName == null) response.sendRedirect("index.jsp");
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="about.jsp">about</a></li>
+							<li><a href="about.jsp">about</a></li>
 								<li><a href="products.jsp">Products</a></li>
 								<li><a href="offers.jsp">Offers</a></li>
 								<li><a href="blog.jsp">blog</a></li>
 								<li><a href="contact.jsp">contact</a></li>
 							</ul>
 						</nav>
-						<div class="reservations_phone ml-auto" style=" border: none;"><a href="profile.jsp">Hi <%=userName %></a></div>
+						<div class="reservations_phone ml-auto" style=" border: none;"><a href="">Welcome <%=userName %></a></div>
 						<form action="LogoutServlet" method="post"><div class="reservations_phone ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -106,12 +104,12 @@ if(userName == null) response.sendRedirect("index.jsp");
 	 <div class="menu trans_800">
   		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
   			<ul>
-  				<li><a href="home.jsp">Home</a></li>
-  				<li><a href="about.jsp">about</a></li>
-				<li><a href="products.jsp">Products</a></li>
-				<li><a href="offers.jsp">Offers</a></li>
-				<li><a href="blog.jsp">blog</a></li>
-				<li><a href="contact.jsp">contact</a></li>
+  				<li><a href="home.jsp">home</a></li>
+  				<li><a href="#">about us</a></li>
+  				<li><a href="#">Products</a></li>
+  				<li><a href="#">Offers</a></li>
+  				<li><a href="">blog</a></li>
+  				<li><a href="">contact</a></li>
   			</ul>
   		</div>
   		<div class="menu_reservations_phone ml-auto"><a style="color:white" href="">Hi <%=userName %></a></div>
@@ -126,14 +124,14 @@ if(userName == null) response.sendRedirect("index.jsp");
 	<!-- Home -->
 
 	<div class="home">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/menu.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/imageedit_1_9859033174.jpg" data-speed="0.8"></div>
 		<div class="home_container">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="home_content text-center">
 							<div class="home_subtitle page_subtitle">Cloud Bar</div>
-							<div class="home_title"><h1>Products</h1></div>
+							<div class="home_title"><h1>Contact Us</h1></div>
 						</div>
 					</div>
 				</div>
@@ -141,66 +139,32 @@ if(userName == null) response.sendRedirect("index.jsp");
 		</div>
 	</div>
 
-	<!-- The Menu -->
+<div class="row1">
+   <div class="left1" style="background-color:#fff;">
+<div id="envelope1">   
+   <form action="" method="post">
 
-	<div class="themenu">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title_container text-center">
-						<div class="section_subtitle page_subtitle">Products</div>
-						<div class="section_title"><h1>Discover Our Products</h1></div>
-					</div>
-				</div>
-			</div>
-			<div class="row themenu_text_row">
-				<div class="col-lg-6">
-					<div class="themenu_text">
-						<p>With our selection and lower price, you could try something new everyday without exhausting your options – or your bank account. Check here every Friday at 10am through Saturday for our weekend ad featuring great single-bottle buys.</p>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="themenu_text">
-						<p>Check our site daily for information on the latest selection of world-class wines, spirits, and specialty beers. If you’re a social butterfly, we’ve got you covered with daily updates on Facebook, Twitter, and Instagram! The 11-Hour Sale is valid at all Texas locations and prices are good from open until close. Lots of these popular items do not have quantity limits so feel free to stock up for whatever future fun you’ve got brewing!</p>
-					</div>
-				</div>
-			</div>
-			<%  ProductInfo obj = new ProductInfo();
-			HashMap<String,ArrayList<Product>> products=  obj.getAllProducts(productVar,city); 
-			%>
-			<div class="row themenu_row">
-				<!-- Starters -->
-				<% for(String product: products.keySet()){ %>
-				<div class="col-lg-4 themenu_column">
-					<div class="themenu_image"><img src="images/vodka.jpg" alt=""></div>
-					<div class="themenu_col trans_400">
-						<div class="themenu_col_title"><%=product %></div>
-						<div class="dish_list">
-								<% ArrayList<Product> objProducts = products.get(product); 
-								 for(Product objProduct: objProducts){%>
-							<!-- Dish -->
-							<div class="dish">
-								<div class="dish_title_container d-flex flex-xl-row flex-column align-items-start justify-content-start">
-									<div class="dish_title"><%=objProduct.getProductName() %></div>
-									<div class="dish_price"><%=objProduct.getProductCost() %></div>
-								</div>
-								<div class="dish_contents">
-									<ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
-										<li><%=objProduct.getProductVendor() %></li>
-									</ul>
-								</div>
-								<div class="dish_order"><a href="#">Order Now</a></div>
-							</div>
-							<% } %>
-						</div>
-					</div>
-				</div>
-<% } %>
-										
-			</div>
-		</div>
-	</div>
-
+<label>Your Name</label>
+<input name="name" placeholder="Ashley Peterson" type="text1" width="100px;">
+<label>Email Id</label>
+<input name="email" placeholder="yourname@gmail.com" type="text1">
+<label>Contact Number</label>
+<input name="contact" placeholder="123456789" type="text1">
+<label>Website URL</label>
+<input name="website" placeholder="www.yoursite.com" type="text1">
+<label>Message</label>
+<textarea cols="15" name="message1" placeholder="Message" rows="10">
+</textarea>
+<input id="submit" type="submit1" value="Send Message">
+</form>
+  </div>
+</div>
+  <div class="right1" style="background-color:#fff;">
+  <img src="images/Barty1.jpg"></img>
+  </div>
+  	
+</div>
+	
 	<!-- Footer -->
 
 		<footer class="footer">

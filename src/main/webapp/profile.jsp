@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="presentationLayer.UserInfo"%>
+<%@ page import="businessLayer.User"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,13 +34,16 @@
 <body>
 <%
 String userName = null;
+String emailId = null;
 Cookie[] cookies = request.getCookies();
 if(cookies !=null){
 for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
+	if(cookie.getName().equals("emailId")) emailId = cookie.getValue();
 }
 }
 
+System.out.println(emailId);
 if(userName == null) response.sendRedirect("index.jsp");
 
 %>
@@ -65,7 +71,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 								<li><a href="contact.jsp">contact</a></li>
 							</ul>
 						</nav>
-						<div class="reservations_phone ml-auto" style=" border: none;"><a href="">Welcome <%=userName %></a></div>
+						<div class="reservations_phone ml-auto" style=" border: none;"><a href="profile.jsp">Hi <%=userName %></a></div>
 						<form action="LogoutServlet" method="post"><div class="reservations_phone ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -128,7 +134,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="col">
 						<div class="home_content text-center">
 							<div class="home_subtitle page_subtitle">Cloud Bar</div>
-							<div class="home_title"><h1>Products</h1></div>
+							<div class="home_title"><h1>Profile</h1></div>
 						</div>
 					</div>
 				</div>
@@ -234,42 +240,45 @@ if(userName == null) response.sendRedirect("index.jsp");
             
         </div>
         <!-- Profile Settings-->
+        <%UserInfo ui = new UserInfo();
+        User profile = ui.getUserDetails(emailId); 
+        %>
         <div class="col-lg-8 pb-5">
-            <form class="row">
+            <form class="row" action="UpdateServlet" method="post">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-fn">First Name</label>
-                        <input class="form-control" type="text" id="account-fn" value="Daniel" required="">
+                        <input class="form-control" name="firstname" type="text" id="account-fn" value="<%=profile.getFirstName() %>" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-ln">Last Name</label>
-                        <input class="form-control" type="text" id="account-ln" value="Adams" required="">
+                        <input class="form-control"name="lastname" type="text" id="account-ln" value="<%=profile.getLastName() %>" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-email">E-mail Address</label>
-                        <input class="form-control" type="email" id="account-email" value="daniel.adams@example.com" disabled="">
+                        <input class="form-control" type="email" id="account-email" value="<%=emailId %>" disabled="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-phone">Phone Number</label>
-                        <input class="form-control" type="text" id="account-phone" value="+7 (805) 348 95 72" required="">
+                        <input class="form-control" name="contact" type="text" id="account-phone" value="<%=profile.getContact() %>" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-pass">New Password</label>
-                        <input class="form-control" type="password" id="account-pass">
+                        <input class="form-control" name="pass" type="password" id="account-pass">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-confirm-pass">Confirm Password</label>
-                        <input class="form-control" type="password" id="account-confirm-pass">
+                        <input class="form-control" name="pass" type="password" id="account-confirm-pass">
                     </div>
                 </div>
                 <div class="col-12">
@@ -279,7 +288,7 @@ if(userName == null) response.sendRedirect("index.jsp");
                             <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                             <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
-                        <button class="btn btn-style-1 btn-primary" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
+                        <input value="Update Profile" type="submit">
                     </div>
                 </div>
             </form>
