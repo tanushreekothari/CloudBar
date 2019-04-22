@@ -165,8 +165,8 @@ public class DatabaseConnection {
 		System.out.print(list.get(0));
 		return list;
 	}
-	public HashMap<String,ArrayList<Product>> fetchAllProducts(){
-	HashMap<String,ArrayList<Product>> mapProducts = new HashMap<String,ArrayList<Product>>();
+	public LinkedHashMap<String,ArrayList<Product>> fetchAllProducts(){
+	LinkedHashMap<String,ArrayList<Product>> mapProducts = new LinkedHashMap<String,ArrayList<Product>>();
 	mapProducts.put("Vodka",fetchProducts("Vodka"));
 	mapProducts.put("Whiskey",fetchProducts("Whiskey"));
 	mapProducts.put("Wine",fetchProducts("Wine"));
