@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import businessLayer.Offer;
+import businessLayer.Product; 
 
 public class DatabaseConnection {
 	public HashMap<String, String> fetchPasswordAndName(String username) {
