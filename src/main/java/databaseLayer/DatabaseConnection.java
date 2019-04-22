@@ -164,4 +164,35 @@ public class DatabaseConnection {
 		System.out.print(list.get(0));
 		return list;
 	}
+	public HashMap<String,ArrayList<Product>> fetchAllProducts(){
+	HashMap<String,ArrayList<Product>> mapProducts = new HashMap<String,ArrayList<Product>>();
+	mapProducts.put("Vodka",fetchProducts("Vodka"));
+	mapProducts.put("Whiskey",fetchProducts("Whiskey"));
+	mapProducts.put("Wine",fetchProducts("Wine"));
+	return mapProducts;
+}
+public ArrayList<Product> fetchProducts(String prodCateg){
+	ArrayList<Product> list = new ArrayList<Product>();
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection(
+		"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
+		//here cloudBar is database name, root is username and password
+		PreparedStatement stmt=con.prepareStatement("select LiquorDescription,LiquorName,PriceOffered from LiquorInfo l inner join BarLiquorAssociative b where l.LiquorID = b.LiquorID and b.barID=1");
+	//	stmt.setString(1,org);
+		ResultSet rs=stmt.executeQuery();
+		while(rs.next())  {
+			Product temp = new Product();
+			temp.setProductVendor(rs.getString(1));
+			temp.setProductCost(rs.getString(3));
+			temp.setProductName(rs.getString(2));
+		 list.add(temp);
+		}
+		con.close();
+		}
+	catch(Exception e)
+	{ System.out.println(e);}
+	System.out.print(list.get(0));
+	return list;
+}
 }
