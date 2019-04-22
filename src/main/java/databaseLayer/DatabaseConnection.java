@@ -202,8 +202,8 @@ public boolean insertUserDetails(User user) {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
 			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
-			//here cloudBar is database name, root is username and password  
-			PreparedStatement stmt=con.prepareStatement("insert into userprofile values (?,?,?,?,?,?)");
+			//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("insert into userprofile values (?,?,?,?,?,?,current_date())");
 			stmt.setString(1,user.getEmailId());
 			stmt.setString(2,user.getUserName());
 			stmt.setString(3,user.getFirstName());
