@@ -50,7 +50,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="logo">
-							<a href="#">
+							<a href="home.jsp">
 								<div>Cloud Bar <img src="cloud.png" alt="CloudBarLogo"></div>
 								<div></div>
 							</a>

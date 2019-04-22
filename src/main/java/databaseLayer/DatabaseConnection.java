@@ -196,4 +196,28 @@ public ArrayList<Product> fetchProducts(String prodCateg){
 	System.out.print(list.get(0));
 	return list;
 }
+public boolean insertUserDetails(User user) {
+		HashMap<String, String> map  = new HashMap<String, String>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
+			//here cloudBar is database name, root is username and password  
+			PreparedStatement stmt=con.prepareStatement("insert into userprofile values (?,?,?,?,?,?)");
+			stmt.setString(1,user.getEmailId());
+			stmt.setString(2,user.getUserName());
+			stmt.setString(3,user.getFirstName());
+			stmt.setString(4,user.getLastName());
+			stmt.setString(5,user.getPassword());
+			stmt.setString(6,user.getContact());
+			int i=stmt.executeUpdate();
+			if(i==1) {
+				return true;
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return false;
+	}
 }

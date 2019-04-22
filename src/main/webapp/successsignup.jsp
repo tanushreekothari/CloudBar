@@ -5,6 +5,7 @@
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="3;url=home.jsp" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images1/icons/favicon.ico"/>
@@ -44,44 +45,12 @@ if(message == null){message ="";}%>
 						<br/>
 						<br/>
 	          <img class="logo" src="cloud.png" alt="logo" height="10px" width="10px"/>
-						<div>Account Login</div>
+	          <div style="line-height:35px;">Hurray!!</div>
+						<div style="line-height:35px;">You are one step closer to having the best time.</div>
 					</span>
-
-					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="first-name" class="input100" type="text" name="username" placeholder="User name">
-						<span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Sign in
-						</button>
-					</div>
-
-					<div class="w-full text-center p-t-27 p-b-239">
-						<span class="txt1">
-							Forgot
-						</span>
-
-						<a href="#" class="txt2">
-							User name / password?
-						</a>
-					</div>
-
-					<div class="w-full text-center">
-						<br/>
-					Don't have an account?
-						<a href="signup.jsp" class="txt3">
-							Sign Up
-						</a>
-					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('images1/Barty.png');"></div>
+				<div class="login100-more" style="background-image: url('images1/cheers.jpeg'); background-size: 90%;"></div>
 			</div>
 		</div>
 	</div>
