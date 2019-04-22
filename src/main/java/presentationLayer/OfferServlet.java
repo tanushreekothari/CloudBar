@@ -38,7 +38,7 @@ public class OfferServlet extends HttpServlet{
 		loginCookie.setMaxAge(30*60);
 		response.addCookie(loginCookie);
 		if(null!=city) {
-			Cookie cityCookie = new Cookie("city",city);
+			Cookie cityCookie = new Cookie("city",city.replaceAll(" ", ""));
 			response.addCookie(cityCookie);
 		}
 		if(null!=product) {

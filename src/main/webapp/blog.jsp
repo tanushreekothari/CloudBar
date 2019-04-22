@@ -58,7 +58,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 								<li><a href="contact.jsp">contact</a></li>
 							</ul>
 						</nav>
-						<div class="reservations_phone ml-auto" style=" border: none;"><a href="profile.jsp">Welcome <%=userName %></a></div>
+						<div class="reservations_phone ml-auto" style=" border: none;"><a href="profile.jsp">Hi <%=userName %></a></div>
 						<form action="LogoutServlet" method="post"><div class="reservations_phone ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
