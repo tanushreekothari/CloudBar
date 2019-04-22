@@ -136,7 +136,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 	</div>
 <section class="search-sec">
     <div class="container">
-        <form  novalidate="novalidate">
+        <form action="OfferServlet" method="post">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
