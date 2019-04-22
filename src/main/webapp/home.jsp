@@ -43,7 +43,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 <div class="super_container">
 
 	<!-- Header -->
-<input type="hidden" id="userid" name="userId" value="<%=userName%>>">
+
 	<header class="header">
 		<div class="container">
 			<div class="row">
@@ -153,7 +153,7 @@ if(userName == null) response.sendRedirect("index.jsp");
         DropDownItemsList dl = new DropDownItemsList();
         ArrayList<String> al = dl.getCityList();
         for(String cityVal: al){ %>
-            <option><%= cityVal%></option>
+            <option value="<%= cityVal%>"><%= cityVal%></option>
         <% } %>
                             </select>
                         </div>
@@ -163,19 +163,15 @@ if(userName == null) response.sendRedirect("index.jsp");
                                   <%
         ArrayList<String> alProd = dl.getProductList();
         for(String prodVal: alProd){ %>
-            <option><%= prodVal%></option>
+            <option value="<%= prodVal%>"><%= prodVal%></option>
         <% } %>
 
 
                             </select>
 
                         </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                             
-                             <input type="button" value="Search">
-                          
-                            
+                        <div >
+                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
                         </div>
                     </div>
                 </div>
