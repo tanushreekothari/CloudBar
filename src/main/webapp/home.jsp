@@ -136,7 +136,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 	</div>
 <section class="search-sec">
     <div class="container">
-        <form action="OfferServlet" method="post" novalidate="novalidate">
+        <form  novalidate="novalidate">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
@@ -172,7 +172,10 @@ if(userName == null) response.sendRedirect("index.jsp");
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="button" class="btn btn-danger wrn-btn" value="Search"/>
+                             
+                             <input type="button" value="Search">
+                          
+                            
                         </div>
                     </div>
                 </div>
