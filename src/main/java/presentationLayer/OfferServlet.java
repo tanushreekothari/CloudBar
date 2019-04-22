@@ -25,12 +25,14 @@ public class OfferServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		boolean flag = true;
+		try {
 		// get request parameters for userID and password
+		System.out.println("I am here testing search functionality");
 		String product = request.getParameter("product");
 		String city = request.getParameter("city");
 		String userName = request.getParameter("userId");
 		
-		
+		System.out.println("I am here testing search functionality"+product);
 			Cookie prodCookie = new Cookie("product",product);
 			Cookie cityCookie = new Cookie("city",city);
 			Cookie loginCookie = new Cookie("user",userName);
@@ -40,6 +42,10 @@ public class OfferServlet extends HttpServlet{
 			response.addCookie(cityCookie);
 			response.addCookie(loginCookie);
 			response.sendRedirect("about.jsp");
+		}
+		catch(Exception e) {
+			System.out.print(e);
+		}
 		
 
 	}
