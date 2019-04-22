@@ -42,11 +42,11 @@
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="login.jsp">about</a></li>
-								<li><a href="login.jsp">Products</a></li>
-								<li><a href="login.jsp">Offers</a></li>
-								<li><a href="login.jsp">blog</a></li>
-								<li><a href="login.jsp">contact</a></li>
+								<li><a href="transition.jsp">about</a></li>
+								<li><a href="transition.jsp">Products</a></li>
+								<li><a href="transition.jsp">Offers</a></li>
+								<li><a href="transition.jsp">blog</a></li>
+								<li><a href="transition.jsp">contact</a></li>
 							</ul>
 						</nav>
 						<div class="reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
@@ -80,11 +80,11 @@
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
 			<ul>
 				<li><a href="home.jsp">Home</a></li>
-  				<li><a href="about.jsp">about</a></li>
-				<li><a href="login.jsp">Products</a></li>
-				<li><a href="login.jsp">Offers</a></li>
-				<li><a href="login.jsp">blog</a></li>
-				<li><a href="login.jsp">contact</a></li>
+  				<li><a href="transition.jsp">about</a></li>
+				<li><a href="transition.jsp">Products</a></li>
+				<li><a href="transition.jsp">Offers</a></li>
+				<li><a href="transition.jsp">blog</a></li>
+				<li><a href="transition.jsp">contact</a></li>
 			</ul>
 		</div>
 		<div class="menu_reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
@@ -111,52 +111,7 @@
 		</div>
 		<div class="scroll_icon"></div>
 	</div>
-<section class="search-sec">
-    <div class="container">
-        <form action="#" method="post" novalidate="novalidate">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" name="state" id="exampleFormControlSelect1">
-                                <option>Select State</option>
-                                <option>Texas</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" name="city" id="exampleFormControlSelect2">
-                                <option>Select City</option>
-        <%
-        DropDownItemsList dl = new DropDownItemsList();
-        ArrayList<String> al = dl.getCityList();
-        for(String cityVal: al){ %>
-            <option><%= cityVal%></option>
-        <% } %>
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" name="product" id="exampleFormControlSelect3">
-                                <option value="select">Choose your Booze</option>
-                                  <%
-        ArrayList<String> alProd = dl.getProductList();
-        for(String prodVal: alProd){ %>
-            <option><%= prodVal%></option>
-        <% } %>
 
-
-                            </select>
-
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="button" class="btn btn-danger wrn-btn" onClick="myfunction() ">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
 	<!-- Intro -->
 
 	<div class="intro">
