@@ -355,8 +355,7 @@ ArrayList<User> users = obj.getAllUsers();%>
 				<!-- Footer About -->
 				<div class="col-lg-6 footer_col">
 					<div class="footer_about">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Ut non justo eleifend, facilisis nibh ut, interdum odio.</p>
-					</div>
+						</div>
 				</div>
 
 				<!-- Footer Contact -->
@@ -365,7 +364,7 @@ ArrayList<User> users = obj.getAllUsers();%>
 						<ul>
 							<li class="d-flex flex-row align-items-start justify-content-start">
 								<div><div class="footer_contact_title">Address:</div></div>
-								<div class="footer_contact_text">sdbb</div>
+								<div class="footer_contact_text">On the clouds</div>
 							</li>
 							<li class="d-flex flex-row align-items-start justify-content-start">
 								<div><div class="footer_contact_title">Phone:</div></div>
