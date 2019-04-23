@@ -9,7 +9,8 @@ import businessLayer.User;
 import businessLayer.Blog;
 import businessLayer.User;
 import businessLayer.UserQuery;
-import presentationLayer.Order; 
+import presentationLayer.Order;
+import businessLayer.BarAgent;
 public class DatabaseConnection {
 	public HashMap<String, String> fetchPasswordAndName(String username) {
 		HashMap<String, String> map  = new HashMap<String, String>();
