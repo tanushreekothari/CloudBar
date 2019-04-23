@@ -11,7 +11,7 @@
 <title>Cloud Bar</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="We provide Alcohol-as-a-Service">
+<meta name="description" content="The Venue template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -35,22 +35,23 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="logo">
-							<a href="index.jsp">
+							<a href="#">
 								<div>Cloud Bar <img src="cloud.png" alt="CloudBarLogo"></div>
 								<div></div>
 							</a>
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-								<li><a href="transition.jsp">about</a></li>
-								<li><a href="transition.jsp">Products</a></li>
-								<li><a href="transition.jsp">Offers</a></li>
-								<li><a href="transition.jsp">blog</a></li>
-								<li><a href="transition.jsp">contact</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">about us</a></li>
+								<li><a href="#">Products</a></li>
+								<li><a href="#">Offers</a></li>
+								<li><a href="#">blog</a></li>
+								<li><a href="#">contact</a></li>
 							</ul>
 						</nav>
 						<div class="reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
-						<div class="reservations_phone ml-auto"><a href="signup.jsp">SIGN UP</a></div>
+						<div class="reservations_phone ml-auto"><a href="signup.html">SIGN UP</a></div>
 
 					</div>
 				</div>
@@ -79,16 +80,16 @@
 	<div class="menu trans_800">
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
 			<ul>
-				<li><a href="home.jsp">Home</a></li>
-  				<li><a href="transition.jsp">about</a></li>
-				<li><a href="transition.jsp">Products</a></li>
-				<li><a href="transition.jsp">Offers</a></li>
-				<li><a href="transition.jsp">blog</a></li>
-				<li><a href="transition.jsp">contact</a></li>
+				<li><a href="index.html">home</a></li>
+				<li><a href="about.html">about us</a></li>
+				<li><a href="menu.html">Products</a></li>
+				<li><a href="#">Offers</a></li>
+				<li><a href="blog.html">blog</a></li>
+				<li><a href="contact.html">contact</a></li>
 			</ul>
 		</div>
 		<div class="menu_reservations_phone ml-auto"><a href="login.jsp">LOG IN</a></div>
-		<div class="menu_reservations_phone1 ml-auto"><a href="signup.jsp">SIGN UP</a></div>
+		<div class="menu_reservations_phone1 ml-auto"><a href="signup.html">SIGN UP</a></div>
 	</div>
 
 	<!-- Home -->
@@ -111,7 +112,52 @@
 		</div>
 		<div class="scroll_icon"></div>
 	</div>
+<section class="search-sec">
+    <div class="container">
+        <form action="#" method="post" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" name="state" id="exampleFormControlSelect1">
+                                <option>Select State</option>
+                                <option>Texas</option> 
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" name="city" id="exampleFormControlSelect2">
+                                <option>Select City</option>                                       
+        <% 
+        DropDownItemsList dl = new DropDownItemsList();
+        ArrayList<String> al = dl.getCityList();  
+        for(String cityVal: al){ %>
+            <option><%= cityVal%></option>
+        <% } %> 
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" name="product" id="exampleFormControlSelect3">
+                                <option value="select">Choose your Booze</option>
+                                  <% 
+        ArrayList<String> alProd = dl.getProductList(); 
+        for(String prodVal: alProd){ %>
+            <option><%= prodVal%></option>
+        <% } %>
 
+         
+                            </select>
+                            
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <button type="button" class="btn btn-danger wrn-btn" onClick="myfunction() ">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
 	<!-- Intro -->
 
 	<div class="intro">
@@ -119,7 +165,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="intro_content">
-
+						
 						<div class="intro_title"><h2>About Us</h2></div>
 						<div class="intro_text">
 							<p>Cloud Bar aims to push liquors on virtual clouds and provide alcohol-as-a-service to liquor connoisseurs with a vision to regulate prices. Cloud Bar is a digital platform based out of College Station, Texas that allows its customers to purchase any liquor from authorized sellers and reserve a digital copy of their liquor bottle in their personalized virtual digital bars readily available on the web platform.</p>
@@ -156,20 +202,20 @@
 				<div class="row">
 					<div class="col-lg-7">
 						<div class="sig_content">
-              <%OfferInfo obj = new OfferInfo(); %>
-  							<div class="sig_subtitle page_subtitle">Deal of the day</div>
-  							<div class="sig_title"><h1>Our Top Pick for You</h1></div>
-  							<div class="rating_r sig_rating rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
-  							<div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
-  								<div class="sig_name" id ="disp2"><%=obj.getOfferDesc()%></div>
-  								<div class="sig_price ml-auto" id ="disp1">$<%=obj.getOfferCost()%></div>
-  							</div>
-
-  							<div class="sig_content_list">
-  								<ul class="d-flex flex-row align-items-center justify-content-start">
-  									<li id ="disp"><%=obj.getOfferCategory()%></li>
-  								</ul>
-  							</div>
+						<%OfferInfo obj = new OfferInfo(); %>
+							<div class="sig_subtitle page_subtitle">Deal of the day</div>
+							<div class="sig_title"><h1>Our Top Pick for You</h1></div>
+							<div class="rating_r sig_rating rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
+							<div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
+								<div class="sig_name" id ="disp2"><%=obj.getOfferDesc()%></div>
+								<div class="sig_price ml-auto" id ="disp1">$<%=obj.getOfferCost()%></div>
+							</div>
+							
+							<div class="sig_content_list">
+								<ul class="d-flex flex-row align-items-center justify-content-start">
+									<li id ="disp">Beer</li>
+								</ul>
+							</div>
 							<div class="button sig_button trans_200"><a href="#">Redeem Offer</a></div>
 						</div>
 					</div>
@@ -197,7 +243,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="themenu_title_bar_container">
-						<div class="themenu_stars text-center page_subtitle">Offers</div>
+						<div class="themenu_stars text-center page_subtitle">Products</div>
 						<div class="themenu_rating text-center">
 							<div class="rating_r rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
 						</div>
@@ -208,11 +254,11 @@
 				</div>
 			</div>
 			<div class="row themenu_row">
-<%  HashMap<String,ArrayList<Offer>> offers = obj.getTopOffers();
+<%  HashMap<String,ArrayList<Offer>> offers = obj.getTopOffers(); 
 %>
 				<!-- Starters -->
-				<%
-
+				<% 
+       				 
       						  for(String offer: offers.keySet()){ %>
 				<div class="col-lg-4 themenu_column">
 					<div class="themenu_col">
@@ -220,8 +266,8 @@
 						<div class="dish_list">
 
 							<!-- Dish -->
-							                       <%
-       				 ArrayList<Offer> objOffers = offers.get(offer);
+							                       <% 
+       				 ArrayList<Offer> objOffers = offers.get(offer); 
       						  for(Offer objOffer: objOffers){ %>
 							<div class="dish">
 								<div class="dish_title_container d-flex flex-xl-row flex-column align-items-start justify-content-start">
@@ -240,14 +286,14 @@
 					</div>
 				</div>
 <% } %>
-
+				
 
 			</div>
 		</div>
 	</div>
 
 	<!-- Reservations -->
-<!--
+<!--  
 	<div class="reservations text-center">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/reservations.jpg" data-speed="0.8"></div>
 		<div class="container">
@@ -288,7 +334,7 @@
 				<div class="col-lg-3 footer_col">
 					<div class="footer_logo">
 						<div class="footer_logo_title">Cloud Bar</div>
-
+						
 					</div>
 					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 <p style="line-height: 1.2;">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made by Group 24</p></div>
@@ -343,3 +389,4 @@
 </body>
 
 </html>
+        
