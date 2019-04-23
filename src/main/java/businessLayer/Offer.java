@@ -5,6 +5,13 @@ public class Offer {
 		String offerCost;
 		String offerCategory;
 		String org;
+		String imageUrl;
+		public String getImageUrl() {
+			return imageUrl;
+		}
+		public void setImageUrl(String imageUrl) {
+			this.imageUrl = imageUrl;
+		}
 		public String getOfferName() {
 			return offerName;
 		}

@@ -4,6 +4,21 @@ public class Product {
 	private String productName;
 	private String productVendor;
 	private String productCost;
+	private String productId;
+	private String imageUrl;
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	public String getProductId() {
+		return productId;
+	}
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
 	public String getProductName() {
 		return productName;
 	}

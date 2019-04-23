@@ -8,6 +8,8 @@ import businessLayer.Product;
 import businessLayer.User;
 import businessLayer.Blog;
 import businessLayer.User;
+import businessLayer.UserQuery;
+import presentationLayer.Order; 
 public class DatabaseConnection {
 	public HashMap<String, String> fetchPasswordAndName(String username) {
 		HashMap<String, String> map  = new HashMap<String, String>();
@@ -287,5 +289,227 @@ public boolean updateUserDetails(User user) {
 	{ System.out.println(e);}
 	return false;
 }
+public ArrayList<User> fetchAllUsers(){
+		ArrayList<User> list = new ArrayList<User>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("SELECT emailid, firstname,lastname,contactnumber,registrationdate FROM userprofile");
+		//	stmt.setString(1,org);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next())  {
+				User temp = new User();
+				temp.setEmailId(rs.getString(1));
+				temp.setFirstName(rs.getString(2));
+				temp.setLastName(rs.getString(3));
+				temp.setContact(rs.getString(4));
+				temp.setDate(rs.getString(5));
+			 list.add(temp);
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return list;
+	}
+	public ArrayList<Product> fetchAllProducts(){
+		ArrayList<Product> list = new ArrayList<Product>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("SELECT productid, productname FROM products");
+		//	stmt.setString(1,org);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next())  {
+				Product temp = new Product();
+				temp.setProductName(rs.getString(2));
+				temp.setProductId(rs.getString(1));
+			 list.add(temp);
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return list;
+	}
+	public ArrayList<BarAgent> fetchAllBarAgents(){
+		ArrayList<BarAgent> list = new ArrayList<BarAgent>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("SELECT barid, barname, barrank, issponsored, barweight FROM baragents");
+		//	stmt.setString(1,org);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next())  {
+				BarAgent temp = new BarAgent();
+				temp.setBarId(rs.getInt(1));
+				temp.setBarName(rs.getString(2));
+				temp.setBarRank(rs.getInt(3));
+				temp.setBarWeight(rs.getDouble(4));
+				temp.setIsSponsored(rs.getInt(5));
+			 list.add(temp);
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return list;
+	}
+	public boolean deleteUser(String emailId) {
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("delete from userprofile WHERE emailid =?");
+			stmt.setString(1,emailId);
+			int i=stmt.executeUpdate();
+			if(i==1) {
+				System.out.print(i);
+				return true;
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return false;
+	}
+	public boolean deleteProduct(String productId) {
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("delete from products WHERE productid =?");
+			stmt.setString(1,productId);
+			int i=stmt.executeUpdate();
+			if(i==1) {
+				System.out.print(i);
+				return true;
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return false;
+	}
+	public boolean deleteBarAgent(int barId) {
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("delete from baragents WHERE barid =?");
+			stmt.setInt(1,barId);
+			int i=stmt.executeUpdate();
+			if(i==1) {
+				System.out.print(i);
+				return true;
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return false;
+	}
+	public int getMaxId() {
+		int max=0;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("select max(queryid) from userqueries");
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next())  {
+				max = rs.getInt(1);
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return max;
+	}
+
+	public boolean insertUserQuery(UserQuery userQuery) {
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+			//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("insert into userqueries values (?,current_date(),?,?,?,?,?)");
+			stmt.setInt(1,getMaxId()+1);
+			stmt.setString(2,userQuery.getName());
+			stmt.setString(3,userQuery.getEmail());
+			stmt.setString(4,userQuery.getContact());
+			stmt.setString(5,userQuery.getMessage());
+			stmt.setString(6,userQuery.getWebsiteUrl());
+			int i=stmt.executeUpdate();
+			if(i==1) {
+				return true;
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return false;
+	}
+	public int getMaxOrderId() {
+		int max=0;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("select max(orderid) from heroku_6adf35ad9b60cf9.order");
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next())  {
+				max = rs.getInt(1);
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return max;
+	}
+	public boolean insertOrderDetails(Order order) {
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+			//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("INSERT INTO heroku_6adf35ad9b60cf9.ORDER (ORDERID,EMAILID,ORDERDATE,ORDERSTATUS,BARLIQUORID,VENDORPRODUCTID,ORDERTOTAL)\n" +
+					"select ?,?,current_date(),\"Pending\",barliquorid,NULL,bla.priceoffered\n" +
+					" from barliquorassociatIVE bla\n" +
+					"inner join baragents ba\n" +
+					"on ba.barid=bla.barid\n" +
+					"inner join liquorinfo l\n" +
+					"on bla.liquorid=l.liquorid\n" +
+					"where l.liquorname=? \n" +
+					"and ba.barname=?");
+			stmt.setInt(1,getMaxOrderId()+1);
+			stmt.setString(2,order.getEmailId());
+			//stmt.setFloat(3,Float.parseFloat(order.getCost().replaceAll("$", "")));
+			stmt.setString(3,order.getLiquorName());
+			stmt.setString(4,order.getBarName());
+			int i=stmt.executeUpdate();
+			if(i==1) {
+				return true;
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println("I am here");
+		e.printStackTrace();
+			System.out.println(e);
+			}
+		return false;
+	}
 
 }

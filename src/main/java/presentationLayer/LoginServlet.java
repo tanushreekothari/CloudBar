@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("username:"+user);
 		LoginAuthentication la = new LoginAuthentication();
 		HashMap<String, String> map = la.fetchPasswordAndName(user);
-		if(map.get("pass").isEmpty()) {
+		if(null==map || null== map.get("pass") || map.get("pass").isEmpty() ) {
 			flag = false;
 		}
 		
@@ -42,6 +42,9 @@ public class LoginServlet extends HttpServlet{
 			loginCookie.setMaxAge(30*60);
 			response.addCookie(loginCookie);
 			response.addCookie(loginCookie1);
+			if(user.equalsIgnoreCase("admin")) {
+				response.sendRedirect("admin.jsp");
+			}
 			response.sendRedirect("success.jsp");
 		}else{
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");

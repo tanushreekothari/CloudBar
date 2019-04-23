@@ -50,7 +50,9 @@ if(userName == null) response.sendRedirect("index.jsp");
 <div class="super_container">
 	
 	<!-- Header -->
-
+        <%UserInfo ui = new UserInfo();
+        User profile = ui.getUserDetails(emailId); 
+        %>
 	<header class="header">
 		<div class="container">
 			<div class="row">
@@ -153,7 +155,7 @@ if(userName == null) response.sendRedirect("index.jsp");
                     <div class="author-card-avatar"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
                     </div>
                     <div class="author-card-details">
-                        <h5 class="author-card-name text-lg">Daniel Adams</h5><span class="author-card-position">Joined February 06, 2017</span>
+                        <h5 class="author-card-name text-lg"><%=profile.getFirstName()%>&nbsp;<%=profile.getLastName() %></h5><span class="author-card-position">Joined <%=profile.getDate() %></span>
                     </div>
                 </div>
             </div>
@@ -240,9 +242,7 @@ if(userName == null) response.sendRedirect("index.jsp");
             
         </div>
         <!-- Profile Settings-->
-        <%UserInfo ui = new UserInfo();
-        User profile = ui.getUserDetails(emailId); 
-        %>
+
         <div class="col-lg-8 pb-5">
             <form class="row" action="UpdateServlet" method="post">
                 <div class="col-md-6">
@@ -288,13 +288,74 @@ if(userName == null) response.sendRedirect("index.jsp");
                             <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                             <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
-                        <input value="Update Profile" type="submit">
+                        <input value="Update Profile" class="btn btn-style-1 btn-primary" type="submit">
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+	<!-- Footer -->
+
+<div class="container mt-5">
+    <div class="row">
+	<div class="col-lg-4 pb-5">
+            
+        </div>
+        <div class="col-lg-8 pb-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Payment Details
+                    </h3>
+                    <div class="checkbox pull-right">
+                        <label>
+                            <input type="checkbox" />
+                            Remember
+                        </label>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                    <div class="form-group">
+                        <label for="cardNumber">
+                            CARD NUMBER</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                required autofocus />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7 col-md-7">
+                            <div class="form-group">
+                                <label for="expityMonth">
+                                    EXPIRY DATE</label>
+                                <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                </div>
+                                <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 col-md-5 pull-right">
+                            <div class="form-group">
+                                <label for="cvCode">
+                                    CV CODE</label>
+                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            
+            <br/>
+            <a class="btn btn-warning btn-lg btn-block" role="button" style="color:white">Save</a>
+        </div>
+    </div>
+</div>
+
 	<!-- Footer -->
 
 		<footer class="footer">
@@ -358,4 +419,4 @@ if(userName == null) response.sendRedirect("index.jsp");
 <script src="plugins/jquery-timepicker/jquery.timepicker.js"></script>
 <script src="js/menu.js"></script>
 </body>
-</html>
+</html></html>

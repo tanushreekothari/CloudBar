@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="presentationLayer.UserInfo"%>
+<%@ page import="businessLayer.User"%>
+<%@ page import="presentationLayer.ProductInfo"%>
+<%@ page import="businessLayer.Product"%>
+<%@ page import="presentationLayer.BarInfo"%>
+<%@ page import="businessLayer.BarAgent"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +25,7 @@
 <link rel="stylesheet" type="text/css" href="styles/menu.css">
 <link rel="stylesheet" type="text/css" href="styles/menu_responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/contactus.css">
+<link rel="stylesheet" type="text/css"  href="styles/admin.css">
 <style>
 .logo img {
     width: 100px;
@@ -26,25 +34,19 @@
     border-style: none;
 }
 
+}
 </style>
 </head>
 <body>
 <%
 String userName = null;
-String emailId = null;
-String status = null;
 Cookie[] cookies = request.getCookies();
 if(cookies !=null){
 for(Cookie cookie : cookies){
 	if(cookie.getName().equals("user")) userName = cookie.getValue();
-	if(cookie.getName().equals("emailId")) emailId = cookie.getValue();
-	if(cookie.getName().equals("status")) status = cookie.getValue();
 }
 }
-
-System.out.println(emailId);
 if(userName == null) response.sendRedirect("index.jsp");
-
 %>
 <div class="super_container">
 	
@@ -63,14 +65,15 @@ if(userName == null) response.sendRedirect("index.jsp");
 						</div>
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
-							<li><a href="about.jsp">about</a></li>
+								
+								<li><a href="about.jsp">about</a></li>
 								<li><a href="products.jsp">Products</a></li>
 								<li><a href="offers.jsp">Offers</a></li>
 								<li><a href="blog.jsp">blog</a></li>
 								<li><a href="contact.jsp">contact</a></li>
 							</ul>
 						</nav>
-						<div class="reservations_phone ml-auto" style=" border: none;"><a href="profile.jsp">Welcome <%=userName %></a></div>
+						<div class="reservations_phone ml-auto" style=" border: none;"><a href="">Welcome admin</a></div>
 						<form action="LogoutServlet" method="post"><div class="reservations_phone ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -106,7 +109,8 @@ if(userName == null) response.sendRedirect("index.jsp");
 	 <div class="menu trans_800">
   		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
   			<ul>
-  				<li><a href="home.jsp">Home</a></li>
+  				
+  								<li><a href="home.jsp">Home</a></li>
   								<li><a href="about.jsp">about</a></li>
 								<li><a href="products.jsp">Products</a></li>
 								<li><a href="offers.jsp">Offers</a></li>
@@ -114,7 +118,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 								<li><a href="contact.jsp">contact</a></li>
   			</ul>
   		</div>
-  		<div class="menu_reservations_phone ml-auto"><a style="color:white" href="profile.jsp">Hi <%=userName %></a></div>
+  		<div class="menu_reservations_phone ml-auto"><a style="color:white" href="">Hi <%=userName %></a></div>
   	<form action="LogoutServlet" method="post">	<div class="menu_reservations_phone1 ml-auto"><input type="submit" value="LOGOUT" style="background-color: Transparent;
       background-repeat:no-repeat;
       border: none;
@@ -133,7 +137,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 					<div class="col">
 						<div class="home_content text-center">
 							<div class="home_subtitle page_subtitle">Cloud Bar</div>
-							<div class="home_title"><h1>Contact Us</h1></div>
+							<div class="home_title"><h1>For Admin Access Only</h1></div>
 						</div>
 					</div>
 				</div>
@@ -141,31 +145,196 @@ if(userName == null) response.sendRedirect("index.jsp");
 		</div>
 	</div>
 
-<div class="row1">
-   <div class="left1" style="background-color:#fff;">
-<div id="envelope1">   
-   <form action="ContactServlet" method="post">
+<div id="user_info">
+<!-- User Profile Table Content -->
 
-<label>Your Name</label>
-<input name="name" placeholder="Enter your name here" type="text1" width="100px;">
-<label>Email Id</label>
-<input name="email" placeholder="Enter your email id here" type="text1">
-<label>Contact Number</label>
-<input name="contact" placeholder="Enter your contact number here" type="text1">
-<label>Website URL</label>
-<input name="website" placeholder="Enter your website's URL here" type="text1">
-<label>Message</label>
-<textarea cols="15" name="message1" placeholder="Enter your message here" rows="10">
-</textarea>
-<input id="submit" type="submit" value="Send Message">
+<div class="table_fetch">
+<h2>User Profile Table</h2>
+
+<table>
+<%UserInfo obj = new UserInfo();
+ArrayList<User> users = obj.getAllUsers();%>
+<thead>
+    <tr>
+      <th scope="col">Email Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Contact Number</th>
+	  <th scope="col">Registration Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% for(User user:users){%>
+  <tr>
+	  <!-- Fetching User Information from User Profile table -->
+	  
+	    
+    <td scope="row" data-label="Email Id"><%=user.getEmailId() %></td>
+    <td scope="row" data-label="First Name"><%=user.getFirstName() %></td>
+    <td scope="row" data-label="Last Name"><%=user.getLastName() %></td>
+    <td scope="row" data-label="Contact Number"><%=user.getContact() %></td>
+	<td scope="row" data-label="Registration Date"><%=user.getDate() %></td>
+	
+	</tr>
+	<%} %>
+ </tbody>
+</table>
+
+</div>
+
+<!-- Deleting a particular user entered by the admin -->
+
+<div class="delete_element_table"> 
+<form id="del_userid" action="DeleteServlet" method="post" style="display: block;">
+<div class="delete_element_text">
+<label for="userid">Enter the email id you want to delete: </label>
+<input class="input_text" type="text" name="emailVal" tabindex="1" placeholder="Email Id" value="">
+</div>
+<div class="delete_element_btn">
+<input type="submit" name="register-submit" class="btn-delete" tabindex="5" value="Delete">
+</div>
+ 
+ 					<!-- For displaying error message if no email id entered -->
+						  
+					<!-- For displaying success message on deletion -->
+						  
+						
+					<!-- For displaying error message on inappropriate email id -->
+						  
+						
 </form>
-  </div>
 </div>
-  <div class="right1" style="background-color:#fff;">
-  <img src="images/Barty1.jpg"></img>
-  </div>
-  	
+
+</div> 
+<!-- End of user profile content -->
+
+<div id="product_info">
+<!-- Product Info Table Content -->
+
+<div class="table_fetch">
+<h2>Product Information</h2>
+
+<table>
+<thead>
+  <tr>
+   <th scope="col">Product Id</th>
+      <th scope="col">Product Name</th>
+    
+    
+    
+    
+  </tr>
+  </thead>
+  <tbody>
+  <%ProductInfo prodObj = new ProductInfo();
+  ArrayList<Product> products = prodObj.getAllProducts();
+  for(Product product: products){%>
+  <tr>
+	  <!-- Fetching Product Information from Product information table -->
+	  
+	    
+    <td scope="row" data-label="Product Id"><%=product.getProductId() %></td>
+    <td scope="row" data-label="Product Name"><%=product.getProductName() %></td>
+
+	</tr>
+	<%} %>
+  </tbody>
+</table>
+
 </div>
+
+<!-- Deleting a particular product entered by the admin -->
+
+<div class="delete_element_table">
+<form id="del_recipeid" action="DeleteServlet" method="post" style="display: block;">
+<div class="delete_element_text">
+<label for="recipeid">Enter the product id you want to delete: </label>
+<input class="input_text" type="text" name="prodVal"  tabindex="1" placeholder="Product Id" value="">
+</div>
+<div class="delete_element_btn">
+<input type="submit" name="register-submit" class="btn-delete" tabindex="5" value="Delete">
+</div>
+   
+					<!-- For displaying error message if no product id entered -->
+						  
+					<!-- For displaying success message on deletion -->
+						  
+					<!-- For displaying error message on inappropriate product id -->
+						  
+
+</form>
+</div>
+
+</div>
+<!-- End of product content -->
+
+<div id="bar_info">
+<!-- Review Table Content -->
+
+<div class="table_fetch">
+<h2>Bar Agents Information</h2>
+
+<table>
+
+ <thead>
+ <%BarInfo barObj = new BarInfo();
+  ArrayList<BarAgent> bars = barObj.getAllBarAgents();%>
+ 
+    <tr>
+      <th scope="col">Bar Id</th>
+      <th scope="col">Bar Name</th>
+      <th scope="col">is sponsored</th>
+      <th scope="col">Bar Rank</th>
+	  <th scope="col">Bar Weight</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+   <% for(BarAgent bar: bars){%>
+  <tr>
+	  <!-- Fetching Bar Information from Bar Info table -->
+	  
+	    
+  <td scope="row" data-label="Bar Id"><%=bar.getBarId() %></td>
+    <td scope="row" data-label="Bar Name"><%=bar.getBarName() %></td>
+    <td scope="row" data-label="is sponsored"><%=bar.getIsSponsored() %></td>
+    <td scope="row" data-label="Bar Rank"><%=bar.getBarRank() %></td>
+	<td scope="row" data-label="Bar Weight"><%=bar.getBarWeight() %></td>
+     
+  </tr>
+  <%} %>
+	 </tbody>
+ 
+</table>
+
+</div>  
+
+<!-- Deleting a particular bar entered by the admin -->
+
+<div class="delete_element_table">
+<form id="del_reveiwid" action="DeleteServlet" method="post" style="display: block;">
+<div class="delete_element_text">
+<label for="reviewid">Enter the bar id you want to delete: </label>
+<input class="input_text" type="text" name="barVal" tabindex="1" placeholder="Bar Id" value="">
+</div>
+<div class="delete_element_btn">
+<input type="submit" name="register-submit" class="btn-delete" tabindex="5" value="Delete">
+</div>
+
+
+					<!-- For displaying error message if no bar id entered -->
+						  
+					<!-- For displaying success message on deletion -->
+						  
+					<!-- For displaying error message on inappropriate bar id -->
+						  
+</form>
+</div>
+
+</div>
+
+<!-- End of bar content -->
 	
 	<!-- Footer -->
 
