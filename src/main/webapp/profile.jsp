@@ -194,10 +194,10 @@ if(userName == null) response.sendRedirect("index.jsp");
                     <tbody><% for(Order order : orders ){ %>
                         <tr>
                             <td><%= order.getEmailId()%></td>
-                            <td><%= order.getBarName()%>Shiner</td>
-							<td><%= order.getDate() %>August 08, 2017</td>
-                            <td><%= order.getCost()%><span class="badge badge-danger m-0">Canceled</span></td>
-                            <td><%= order.getStatus()%><span>$760.5</span></td>
+                            <td><%= order.getBarName()%></td>
+							<td><%= order.getDate() %></td>
+                            <td><<span class="badge badge-danger m-0">%= order.getStatus()%></span></td>
+                            <td><span>$<%= order.getCost()%></span></td>
                         </tr>
                         <%} %>
                     </tbody>
