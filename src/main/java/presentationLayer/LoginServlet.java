@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet{
 		if(null==map || null== map.get("pass") || map.get("pass").isEmpty() ) {
 			flag = false;
 		}
-		
+		String page ="success.jsp";
 		if(flag == true && map.get("pass").equals(pwd)){
 			Cookie loginCookie = new Cookie("user",map.get("name"));
 			Cookie loginCookie1 = new Cookie("emailId",user);
@@ -43,9 +43,9 @@ public class LoginServlet extends HttpServlet{
 			response.addCookie(loginCookie);
 			response.addCookie(loginCookie1);
 			if(user.equalsIgnoreCase("admin")) {
-				response.sendRedirect("admin.jsp");
+				page ="admin.jsp";
 			}
-			response.sendRedirect("success.jsp");
+			response.sendRedirect(page);
 		}else{
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
 			request.setAttribute("alertMsg", "Either user name or password is incorrect");
