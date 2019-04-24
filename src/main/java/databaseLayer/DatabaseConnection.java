@@ -148,14 +148,14 @@ public class DatabaseConnection {
 			Connection con=DriverManager.getConnection(
 			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
 			//here cloudBar is database name, root is username and password
-			PreparedStatement stmt=con.prepareStatement("SELECT LIQUORNAME,LIQUORDESCRIPTION,PRICEOFFERED FROM BARLIQUORASSOCIATIVE BLA INNER JOIN BARAGENTS BA ON BLA.BARID=BA.BARID INNER JOIN LIQUORINFO L ON L.LIQUORID=BLA.LIQUORID WHERE BA.BARNAME=?");
-			stmt.setString(1,org);
-			ResultSet rs=stmt.executeQuery();
+			PreparedStatement stmt=con.prepareStatement("select LiquorDescription,LiquorName,PriceOffered,productid from LiquorInfo l inner join BarLiquorAssociative b where l.LiquorID = b.LiquorID and b.barID=1");
+			//	stmt.setString(1,org);
+			ResultSet rs=stmt.executeQuery();  
 					while(rs.next())  {
-									Product temp = new Product();
-									temp.setProductVendor(rs.getString(3));
-									temp.setProductCost(rs.getString(2));
-									temp.setProductName(rs.getString(1));
+						Offer temp = new Offer();
+temp.setOfferCategory(rs.getString(1));
+temp.setOfferCost(rs.getString(3));
+temp.setOfferName(rs.getString(2));
 									switch(rs.getInt(4)) {
 					case 2:
 						temp.setImageUrl("images/whiskey.jpg");
@@ -296,7 +296,7 @@ public class DatabaseConnection {
 				}
 				list.add(temp);
 			}
-		
+
 				con.close();
 				}
 			catch(Exception e)
