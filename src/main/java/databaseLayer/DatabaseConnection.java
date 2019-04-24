@@ -150,7 +150,7 @@ public class DatabaseConnection {
 			//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("select LiquorDescription,LiquorName,PriceOffered,productid from LiquorInfo l inner join BarLiquorAssociative b where l.LiquorID = b.LiquorID and b.barID=1");
 			//	stmt.setString(1,org);
-			ResultSet rs=stmt.executeQuery();  
+			ResultSet rs=stmt.executeQuery();
 					while(rs.next())  {
 						Offer temp = new Offer();
 temp.setOfferCategory(rs.getString(1));
@@ -308,8 +308,8 @@ public boolean insertUserDetails(User user) {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection(
-			"jdbc:mysql://localhost:3306/cloudBar?autoReconnect=true&useSSL=false","root","password");
-			//here cloudBar is database name, root is username and password
+			"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
+		//here cloudBar is database name, root is username and password
 			PreparedStatement stmt=con.prepareStatement("insert into userprofile values (?,?,?,?,?,current_date())");
 			stmt.setString(1,user.getEmailId());
 			stmt.setString(2,user.getFirstName());
