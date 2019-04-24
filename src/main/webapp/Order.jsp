@@ -35,7 +35,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 			
-				<form class="login100-form validate-form" action="LoginServlet" method="post">
+				<form class="login100-form validate-form" action="OrderServlet" method="post">
 <div style="margin:auto;"><font style=""font-size:0.8em; color:red;"></font></div>
 					<span class="login100-form-title p-b-34">
 
@@ -50,7 +50,10 @@
 					
 
 					<div class="container-login100-form-btn">
-						<h5>We have succeessfully passed your order to our accounting team!</h5>
+						<h5>We have succeessfully passed your order to our accounting team! </h5>
+						 <br/> 
+						 <br/>
+						<h5>** Please make sure that your card information has been added in your profile page**</h5>
 					</div>
 
 					<div class="w-full text-center p-t-27 p-b-239">

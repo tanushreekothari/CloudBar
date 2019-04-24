@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import businessLayer.BarAgent;
 import businessLayer.BarLogic;
+import businessLayer.OrderLogic;
 
 public class BarInfo {
 	public ArrayList<BarAgent> getAllBarAgents(){
@@ -14,5 +15,8 @@ public class BarInfo {
 		BarLogic dc = new BarLogic();
 		return dc.deleteBarAgent(barId);
 	}
-
+	public ArrayList<Order> getOrderDetails(String emailId) {
+		OrderLogic ol = new OrderLogic();
+		return ol.fetchOrderDetails(emailId);
+	}
 }

@@ -170,7 +170,7 @@
   									<li id ="disp"><%=obj.getOfferCategory()%></li>
   								</ul>
   							</div>
-							<div class="button sig_button trans_200"><a href="#">Redeem Offer</a></div>
+							<div class="button sig_button trans_200"><a href="transition.jsp">Redeem Offer</a></div>
 						</div>
 					</div>
 				</div>
@@ -233,7 +233,7 @@
 										<li><%= objOffer.getOfferCategory()%></li>
 									</ul>
 								</div>
-								<div class="dish_order"><a href="#">Order Now</a></div>
+								<div class="dish_order"><a href="transition.jsp">Order Now</a></div>
 							</div>
 								<% } %>
 						</div>

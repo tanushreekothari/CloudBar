@@ -32,8 +32,9 @@
 <body>
 <%
 String userName = null;
-String productVar = null;
-String city = null;
+String productVar = "";
+String city = "";
+String img= "";
 Cookie[] cookies = request.getCookies();
 if(cookies !=null){
 for(Cookie cookie : cookies){
@@ -144,6 +145,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 	<!-- The Menu -->
 
 	<div class="themenu">
+	<form action="OrderServlet" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -170,13 +172,14 @@ if(userName == null) response.sendRedirect("index.jsp");
 			%>
 			<div class="row themenu_row">
 				<!-- Starters -->
-				<% for(String product: products.keySet()){ %>
+				<% for(String product: products.keySet()){
+					ArrayList<Product> objProducts = products.get(product); %>
 				<div class="col-lg-4 themenu_column">
-					<div class="themenu_image"><img src="images/vodka.jpg" alt=""></div>
+					<div class="themenu_image"><img src="<%=img %>" alt=""></div>
 					<div class="themenu_col trans_400">
 						<div class="themenu_col_title"><%=product %></div>
 						<div class="dish_list">
-								<% ArrayList<Product> objProducts = products.get(product); 
+								<% 
 								 for(Product objProduct: objProducts){%>
 							<!-- Dish -->
 							<div class="dish">
@@ -189,9 +192,10 @@ if(userName == null) response.sendRedirect("index.jsp");
 										<li><%=objProduct.getProductVendor() %></li>
 									</ul>
 								</div>
-								<div class="dish_order"><a href="#">Order Now</a></div>
+								<div class="dish_order"><input type="submit" value="Order Now"></div>
 							</div>
-							<% } %>
+							
+							<% img = objProduct.getImageUrl(); } %>
 						</div>
 					</div>
 				</div>
@@ -199,6 +203,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 										
 			</div>
 		</div>
+		</form>
 	</div>
 
 	<!-- Footer -->

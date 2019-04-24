@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet{
 		if(null==map || null== map.get("pass") || map.get("pass").isEmpty() ) {
 			flag = false;
 		}
+		
 		String page ="success.jsp";
 		if(flag == true && map.get("pass").equals(pwd)){
 			Cookie loginCookie = new Cookie("user",map.get("name"));

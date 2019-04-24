@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="presentationLayer.UserInfo"%>
+        <%@ page import="presentationLayer.BarInfo"%>
+            <%@ page import="presentationLayer.Order"%>
 <%@ page import="businessLayer.User"%>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
@@ -174,7 +176,10 @@ if(userName == null) response.sendRedirect("index.jsp");
         </div>
         <!-- Orders Table-->
         <div class="col-lg-8 pb-5">
-           
+           <% BarInfo bi = new BarInfo();
+           ArrayList<Order> orders = bi.getOrderDetails(emailId);
+          
+           %>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead>
@@ -186,49 +191,15 @@ if(userName == null) response.sendRedirect("index.jsp");
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody><% for(Order order : orders ){ %>
                         <tr>
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">78A643CD409</a></td>
-                            <td>Shiner</td>
-							<td>August 08, 2017</td>
-                            <td><span class="badge badge-danger m-0">Canceled</span></td>
-                            <td><span>$760.50</span></td>
+                            <td><%= order.getEmailId()%></td>
+                            <td><%= order.getBarName()%>Shiner</td>
+							<td><%= order.getDate() %>August 08, 2017</td>
+                            <td><%= order.getCost()%><span class="badge badge-danger m-0">Canceled</span></td>
+                            <td><%= order.getStatus()%><span>$760.5</span></td>
                         </tr>
-                        <tr>
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">34VB5540K83</a></td>
-                            <td>Shiner</td>
-							<td>July 21, 2017</td>
-                            <td><span class="badge badge-info m-0">In Progress</span></td>
-                            <td>$315.20</td>
-                        </tr>
-                        <tr>
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">112P45A90V2</a></td>
-                            <td>Shiner</td>
-							<td>June 15, 2017</td>
-                            <td><span class="badge badge-warning m-0">Delayed</span></td>
-                            <td>$1,264.00</td>
-                        </tr>
-                        <tr>
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">28BA67U0981</a></td>
-                            <td>Shiner</td>
-							<td>May 19, 2017</td>
-                            <td><span class="badge badge-success m-0">Delivered</span></td>
-                            <td>$198.35</td>
-                        </tr>
-                        <tr>
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">502TR872W2</a></td>
-                            <td>Shiner</td>
-							<td>April 04, 2017</td>
-                            <td><span class="badge badge-success m-0">Delivered</span></td>
-                            <td>$2,133.90</td>
-                        </tr>
-                        <tr>
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">47H76G09F33</a></td>
-                            <td>Shiner</td>
-							<td>March 30, 2017</td>
-                            <td><span class="badge badge-success m-0">Delivered</span></td>
-                            <td>$86.40</td>
-                        </tr>
+                        <%} %>
                     </tbody>
                 </table>
             </div>

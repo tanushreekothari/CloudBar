@@ -151,52 +151,164 @@ public class DatabaseConnection {
 			PreparedStatement stmt=con.prepareStatement("SELECT LIQUORNAME,LIQUORDESCRIPTION,PRICEOFFERED FROM BARLIQUORASSOCIATIVE BLA INNER JOIN BARAGENTS BA ON BLA.BARID=BA.BARID INNER JOIN LIQUORINFO L ON L.LIQUORID=BLA.LIQUORID WHERE BA.BARNAME=?");
 			stmt.setString(1,org);
 			ResultSet rs=stmt.executeQuery();
-			while(rs.next())  {
-				Offer temp = new Offer();
-				temp.setOfferCategory(rs.getString(2));
-				temp.setOfferCost(rs.getString(3));
-				temp.setOfferName(rs.getString(1));
-			 list.add(temp);
+				while(rs.next())  {
+					Offer temp = new Offer();
+					temp.setOfferCategory(rs.getString(1));
+					temp.setOfferCost(rs.getString(3));
+					temp.setOfferName(rs.getString(2));
+
+					switch(rs.getString(4)) {
+					case "2":
+						temp.setImageUrl("images/whiskey.jpg");
+						break;
+					case "7":
+						temp.setImageUrl("images/vodka.jpg");
+						break;
+					case "3":
+						temp.setImageUrl("images/rum.jpg");
+						break;
+					case "4":
+						temp.setImageUrl("images/beer.jpg");
+						break;
+					case "5":
+						temp.setImageUrl("images/gin.jpg");
+						break;
+					case "6":
+						temp.setImageUrl("images/tequila.jpg");
+						break;
+					case "1":
+						temp.setImageUrl("images/wine.jpg");
+						break;
+					case "8":
+						temp.setImageUrl("images/irish.jpg");
+						break;
+					default:
+						temp.setImageUrl("images/sig_1.jpg");
+						break;
+				}
+
+				 list.add(temp);
+				}
+				con.close();
+				}
+			catch(Exception e)
+			{ System.out.println(e);}
+			System.out.print(list.get(0));
+			return list;
+		}
+		public LinkedHashMap<String,ArrayList<Product>> fetchAllProducts(String product, String city){
+			LinkedHashMap<String,ArrayList<Product>> mapProducts = new LinkedHashMap<String,ArrayList<Product>>();
+
+			if((product==null && city==null)||(product.isEmpty() && city.isEmpty())) {
+				mapProducts.put("Vodka",fetchProducts("Vodka","Austin"));
+				mapProducts.put("Whiskey",fetchProducts("Whiskey","Austin"));
+				mapProducts.put("Wine",fetchProducts("Wine","Bryan"));
 			}
-			con.close();
+			else if(product==null || product.isEmpty()) {
+				mapProducts.put("Vodka",fetchProducts("Vodka",city));
+				mapProducts.put("Whiskey",fetchProducts("Whiskey","Austin"));
+				mapProducts.put("Wine",fetchProducts("Wine","Bryan"));
 			}
-		catch(Exception e)
-		{ System.out.println(e);
+			else if(city==null || city.isEmpty()) {
+				mapProducts.put(product,fetchProducts(product,"Austin"));
+				mapProducts.put("Whiskey",fetchProducts("Whiskey","Austin"));
+				mapProducts.put("Wine",fetchProducts("Wine","Bryan"));
+			}
+			else if(product.equalsIgnoreCase("Whikey")&& !(city==null || city.isEmpty())) {
+				mapProducts.put("Whiskey",fetchProducts("Whiskey",city));
+				mapProducts.put("Vodka",fetchProducts("Vodka","College Station"));
+				mapProducts.put("Wine",fetchProducts("Wine","Bryan"));
+			}
+			else if(product.equalsIgnoreCase("Whikey")&& (city==null || city.isEmpty())) {
+				mapProducts.put("Whiskey",fetchProducts("Whiskey","Austin"));
+				mapProducts.put("Vodka",fetchProducts("Vodka","College Station"));
+				mapProducts.put("Wine",fetchProducts("Wine","Bryan"));
+			}
+			else if(product.equalsIgnoreCase("Wine")&& !(city==null || city.isEmpty())) {
+				mapProducts.put("Wine",fetchProducts("Wine",city));
+				mapProducts.put("Whiskey",fetchProducts("Whiskey","Austin"));
+				mapProducts.put("Vodka",fetchProducts("Vodka","College Station"));
+
+			}
+			else if(product.equalsIgnoreCase("Wine")&& (city==null || city.isEmpty())) {
+				mapProducts.put("Wine",fetchProducts("Wine","Bryan"));
+				mapProducts.put("Whiskey",fetchProducts("Whiskey","Austin"));
+				mapProducts.put("Vodka",fetchProducts("Vodka","College Station"));
+			}
+			else if(product!=null && city!=null ){
+				mapProducts.put(product,fetchProducts(product,city));
+				mapProducts.put("Whiskey",fetchProducts("Whiskey","Austin"));
+				mapProducts.put("Wine",fetchProducts("Wine","Bryan"));
+			}
+
+
+			return mapProducts;
 		}
-		System.out.print(list.get(0));
-		return list;
-	}
-	public LinkedHashMap<String,ArrayList<Product>> fetchAllProducts(String product, String city){
-	LinkedHashMap<String,ArrayList<Product>> mapProducts = new LinkedHashMap<String,ArrayList<Product>>();
-	mapProducts.put("Vodka",fetchProducts("Vodka"));
-	mapProducts.put("Whiskey",fetchProducts("Whiskey"));
-	mapProducts.put("Wine",fetchProducts("Wine"));
-	return mapProducts;
-}
-public ArrayList<Product> fetchProducts(String prodCateg){
-	ArrayList<Product> list = new ArrayList<Product>();
-	try{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con=DriverManager.getConnection(
-		"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");
-		//here cloudBar is database name, root is username and password
-		PreparedStatement stmt=con.prepareStatement("select LiquorDescription,LiquorName,PriceOffered from LiquorInfo l inner join BarLiquorAssociative b where l.LiquorID = b.LiquorID and b.barID=1");
-	//	stmt.setString(1,org);
-		ResultSet rs=stmt.executeQuery();
-		while(rs.next())  {
-			Product temp = new Product();
-			temp.setProductVendor(rs.getString(1));
-			temp.setProductCost(rs.getString(3));
-			temp.setProductName(rs.getString(2));
-		 list.add(temp);
+		public ArrayList<Product> fetchProducts(String prodCateg, String city){
+			ArrayList<Product> list = new ArrayList<Product>();
+			try{
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con=DriverManager.getConnection(
+						"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+				//here cloudBar is database name, root is username and password
+				PreparedStatement stmt=con.prepareStatement("select li.liquorname, vpa.priceoffered, v.vendorname from vendorproductassociate vpa\n" +
+						"inner join products p\n" +
+						"on p.productid=vpa.productid\n" +
+						"inner join vendor v\n" +
+						"on v.vendorid=vpa.vendorid\n" +
+						"inner join locations l\n" +
+						"on l.locationid=v.locationid\n" +
+						"inner join liquorinfo li\n" +
+						"on li.productid=p.productid\n" +
+						"where p.productname=?\n" +
+						"and l.locationcity=?;");
+			//	stmt.setString(1,org);
+				ResultSet rs=stmt.executeQuery();
+				while(rs.next())  {
+					Product temp = new Product();
+					temp.setProductVendor(rs.getString(3));
+					temp.setProductCost(rs.getString(2));
+					temp.setProductName(rs.getString(1));
+					switch(prodCateg) {
+						case "Whiskey":
+							temp.setImageUrl("images/whiskey.jpg");
+							break;
+						case "Vodka":
+							temp.setImageUrl("images/vodka.jpg");
+							break;
+						case "Rum":
+							temp.setImageUrl("images/rum.jpg");
+							break;
+						case "Beer":
+							temp.setImageUrl("images/beer.jpg");
+							break;
+						case "Gin":
+							temp.setImageUrl("images/gin.jpg");
+							break;
+						case "Tequila":
+							temp.setImageUrl("images/tequila.jpg");
+							break;
+						case "Wine":
+							temp.setImageUrl("images/wine.jpg");
+							break;
+						case "IrishCream":
+							temp.setImageUrl("images/irish.jpg");
+							break;
+						default:
+							temp.setImageUrl("images/sample.jpg");
+							break;
+					}
+
+
+				 list.add(temp);
+				}
+				con.close();
+				}
+			catch(Exception e)
+			{ System.out.println(e);}
+			return list;
 		}
-		con.close();
-		}
-	catch(Exception e)
-	{ System.out.println(e);}
-	System.out.print(list.get(0));
-	return list;
-}
+
 public boolean insertUserDetails(User user) {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -511,6 +623,39 @@ public ArrayList<User> fetchAllUsers(){
 			System.out.println(e);
 			}
 		return false;
+	}
+	public ArrayList<Order> fetchOrderDetails(String emailId) {
+		ArrayList<Order> list = new ArrayList<Order>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(
+					"jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_6adf35ad9b60cf9?autoReconnect=true&useSSL=false","be084cc3a55986","2519352e");//here cloudBar is database name, root is username and password
+					//here cloudBar is database name, root is username and password
+			PreparedStatement stmt=con.prepareStatement("select li.liquorname, b.barname, o.orderdate, o.orderstatus, o.ordertotal from heroku_6adf35ad9b60cf9.order o\n" +
+					"inner join userprofile up\n" +
+					"on o.emailid=up.emailid\n" +
+					"inner join barliquorassociative bla\n" +
+					"on o.barliquorid=bla.barliquorid\n" +
+					"inner join liquorinfo li\n" +
+					"on bla.liquorid=li.liquorid\n" +
+					"inner join baragents b\n" +
+					"on b.barid= bla.barid where up.emailid=?");
+			stmt.setString(1,emailId);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next())  {
+				Order temp = new Order();
+				temp.setEmailId(emailId);
+				temp.setLiquorName(rs.getString(1));
+				temp.setBarName(rs.getString(2));
+				temp.setDate(rs.getString(3));
+				temp.setStatus(rs.getString(4));
+			 list.add(temp);
+			}
+			con.close();
+			}
+		catch(Exception e)
+		{ System.out.println(e);}
+		return list;
 	}
 
 }

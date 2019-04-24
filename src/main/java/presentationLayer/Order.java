@@ -3,6 +3,20 @@ package presentationLayer;
 public class Order {
 		private String liquorName;
 		private String emailId;
+		private String date;
+		public String getDate() {
+			return date;
+		}
+		public void setDate(String date) {
+			this.date = date;
+		}
+		public String getStatus() {
+			return status;
+		}
+		public void setStatus(String status) {
+			this.status = status;
+		}
+		private String status;
 		public String getEmailId() {
 			return emailId;
 		}

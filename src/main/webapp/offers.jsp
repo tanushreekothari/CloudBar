@@ -143,6 +143,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 	<!-- Signature Dishes -->
 
 	<div class="sig">
+	<form action="OrderServlet" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -174,11 +175,11 @@ if(userName == null) response.sendRedirect("index.jsp");
 											<li><%= offer%></li>
 										</ul>
 									</div>
-									<div class="button sig_button trans_200"><a href="#">Order Now</a></div>
+									<div class="button sig_button trans_200"><input type="submit" value="Order Now"></div>
 								</div>
 							</div>
 							<div class="col-lg-6 sig_col">
-								<div class="sig_image"><img src="images/sig_1.jpg" alt=""></div>
+								<div class="sig_image"><img src="<%=objOffer.getImageUrl() %>" alt=""></div>
 							</div>
 						</div>
 					</div>
@@ -188,6 +189,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 
 	<!-- Footer -->

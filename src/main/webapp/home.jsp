@@ -238,7 +238,7 @@ if(userName == null) response.sendRedirect("index.jsp");
 									<li id ="disp"><%=obj.getOfferCategory()%></li>
 								</ul>
 							</div>
-							<div class="button sig_button trans_200"><a href="#">Redeem Offer</a></div>
+							<div class="button sig_button trans_200"><a href="offers.jsp">Check Out Offer</a></div>
 						</div>
 					</div>
 				</div>
