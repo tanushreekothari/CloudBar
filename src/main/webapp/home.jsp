@@ -302,7 +302,16 @@ if(userName == null) response.sendRedirect("index.jsp");
 										<li><%= objOffer.getOfferCategory()%></li>
 									</ul>
 								</div>
-								<div class="dish_order"><input type="submit" value="Order Now"></div>
+								<div class="dish_order"><input type="submit" value="Order Now" style="background-color: #108cb2;
+								padding:5px;
+      background-repeat:no-repeat;
+      font-size:20px;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none; color:white;
+      
+      "></div>
 							</div>
 								<% } %>
 						</div>

@@ -157,7 +157,16 @@ if(userName == null) response.sendRedirect("index.jsp");
 <label>Message</label>
 <textarea cols="15" name="message1" placeholder="Enter your message here" rows="10">
 </textarea>
-<input id="submit" type="submit" value="Send Message">
+<input id="submit" type="submit" value="Send Message" style="background-color: #108cb2;
+								padding:5px;
+      background-repeat:no-repeat;
+      font-size:20px;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none; color:white;
+      
+      ">
 </form>
   </div>
 </div>

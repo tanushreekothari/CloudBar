@@ -175,8 +175,17 @@ if(userName == null) response.sendRedirect("index.jsp");
 											<li><%= offer%></li>
 										</ul>
 									</div>
-									<div class="button sig_button trans_200"><input type="submit" value="Order Now"></div>
-								</div>
+									<input type="submit" value="Order Now" style="background-color: #108cb2;
+								padding:5px;
+      background-repeat:no-repeat;
+      font-size:20px;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none; color:white;
+      
+      "></div>
+								
 							</div>
 							<div class="col-lg-6 sig_col">
 								<div class="sig_image"><img src="<%=objOffer.getImageUrl() %>" alt=""></div>
