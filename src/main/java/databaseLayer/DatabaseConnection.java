@@ -151,43 +151,41 @@ public class DatabaseConnection {
 			PreparedStatement stmt=con.prepareStatement("SELECT LIQUORNAME,LIQUORDESCRIPTION,PRICEOFFERED FROM BARLIQUORASSOCIATIVE BLA INNER JOIN BARAGENTS BA ON BLA.BARID=BA.BARID INNER JOIN LIQUORINFO L ON L.LIQUORID=BLA.LIQUORID WHERE BA.BARNAME=?");
 			stmt.setString(1,org);
 			ResultSet rs=stmt.executeQuery();
-				while(rs.next())  {
-					Offer temp = new Offer();
-					temp.setOfferCategory(rs.getString(1));
-					temp.setOfferCost(rs.getString(3));
-					temp.setOfferName(rs.getString(2));
-
-					switch(rs.getString(4)) {
-					case "2":
+					while(rs.next())  {
+									Product temp = new Product();
+									temp.setProductVendor(rs.getString(3));
+									temp.setProductCost(rs.getString(2));
+									temp.setProductName(rs.getString(1));
+									switch(rs.getInt(4)) {
+					case 2:
 						temp.setImageUrl("images/whiskey.jpg");
 						break;
-					case "7":
+					case 7:
 						temp.setImageUrl("images/vodka.jpg");
 						break;
-					case "3":
+					case 3:
 						temp.setImageUrl("images/rum.jpg");
 						break;
-					case "4":
+					case 4:
 						temp.setImageUrl("images/beer.jpg");
 						break;
-					case "5":
+					case 5:
 						temp.setImageUrl("images/gin.jpg");
 						break;
-					case "6":
+					case 6:
 						temp.setImageUrl("images/tequila.jpg");
 						break;
-					case "1":
+					case 1:
 						temp.setImageUrl("images/wine.jpg");
 						break;
-					case "8":
+					case 8:
 						temp.setImageUrl("images/irish.jpg");
 						break;
 					default:
 						temp.setImageUrl("images/sig_1.jpg");
 						break;
 				}
-
-				 list.add(temp);
+									list.add(temp);
 				}
 				con.close();
 				}
@@ -265,43 +263,40 @@ public class DatabaseConnection {
 			//	stmt.setString(1,org);
 				ResultSet rs=stmt.executeQuery();
 				while(rs.next())  {
-					Product temp = new Product();
-					temp.setProductVendor(rs.getString(3));
-					temp.setProductCost(rs.getString(2));
-					temp.setProductName(rs.getString(1));
-					switch(prodCateg) {
-						case "Whiskey":
-							temp.setImageUrl("images/whiskey.jpg");
-							break;
-						case "Vodka":
-							temp.setImageUrl("images/vodka.jpg");
-							break;
-						case "Rum":
-							temp.setImageUrl("images/rum.jpg");
-							break;
-						case "Beer":
-							temp.setImageUrl("images/beer.jpg");
-							break;
-						case "Gin":
-							temp.setImageUrl("images/gin.jpg");
-							break;
-						case "Tequila":
-							temp.setImageUrl("images/tequila.jpg");
-							break;
-						case "Wine":
-							temp.setImageUrl("images/wine.jpg");
-							break;
-						case "IrishCream":
-							temp.setImageUrl("images/irish.jpg");
-							break;
-						default:
-							temp.setImageUrl("images/sample.jpg");
-							break;
-					}
-
-
-				 list.add(temp);
+				Product temp = new Product();
+				temp.setProductVendor(rs.getString(3));
+				temp.setProductCost(rs.getString(2));
+				temp.setProductName(rs.getString(1));
+				if(prodCateg.equals("Whiskey")){
+						temp.setImageUrl("images/whiskey.jpg");
 				}
+				else if(prodCateg.equals("Vodka")){
+					temp.setImageUrl("images/vodka.jpg");
+				}
+				else if(prodCateg.equals("Rum")){
+					temp.setImageUrl("images/rum.jpg");
+				}
+				else if(prodCateg.equals("Beer")){
+					temp.setImageUrl("images/beer.jpg");
+				}
+				else if(prodCateg.equals("Gin")){
+					temp.setImageUrl("images/gin.jpg");
+				}
+				else if(prodCateg.equals("Tequila")){
+					temp.setImageUrl("images/tequila.jpg");
+				}
+				else if(prodCateg.equals("Wine")){
+					temp.setImageUrl("images/wine.jpg");
+				}
+				else if(prodCateg.equals("IrishCream")){
+					temp.setImageUrl("images/irish.jpg");
+				}
+				else {
+					temp.setImageUrl("images/sample.jpg");
+				}
+				list.add(temp);
+			}
+		
 				con.close();
 				}
 			catch(Exception e)
